@@ -10,14 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FANGLE">
         <activity
-            android:name=".MainActivity"
+            android:name=".account.sign_up.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account.sign_in.SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".intro.IntroActivity"
             android:exported="true">
             <intent-filter>
+                // 이게 있는 activity는 먼저 실행된다.
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
