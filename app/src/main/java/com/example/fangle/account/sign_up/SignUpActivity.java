@@ -3,8 +3,10 @@ package com.example.fangle.account.sign_up;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,14 +81,45 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        sign_up_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                get_data();
+
+
+    }
+
+    // 회원가입 버튼을 눌르면 나오는 다이얼로그
+    // 입력한 정보를 다시 확인 하게 한다.
+    public void OnClickHandler(View view) {
+        get_data();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("입력한 정보가 맞나요? ").setMessage("아이디 : " + id + "\n"
+                + "비밀번호 : " + password + "\n"
+                + "이메일 : " + email + "\n"
+                + "전화번호 : " + phone_number + "\n"
+                + "닉네임 : " + nickname + "\n"
+                + "생년월일 : " + birthdate + "\n"
+                + "성별 : " + gender );
+
+        builder.setPositiveButton("네! 맞아요!", new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialog, int which) {
                 sign_Up();
             }
         });
 
+        builder.setNegativeButton("음.. 아니에요", new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialog, int which) {
+                sign_up_id.setText("");
+                sign_up_password.setText("");
+                sign_up_email.setText("");
+                sign_up_phone_number.setText("");
+                sign_up_nickname.setText("");
+                sign_up_birthdate.setText("");
+                sign_up_gender.setText("");
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+
+        alertDialog.show();
     }
 
     // 입력한 회원정보 값을 저장한다.
@@ -100,6 +133,8 @@ public class SignUpActivity extends AppCompatActivity {
         birthdate = sign_up_birthdate.getText().toString(); //  사용자 생년월일
         gender = sign_up_gender.getText().toString(); // 사용자 성별
     }
+
+
 
     // When initializing your Activity, check to see if the user is currently signed in.
     // 활동을 초기화할 때 사용자가 현재 로그인되어 있는지 확인하십시오.
@@ -118,8 +153,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    // Sign in success, update UI with the signed-in user's information
-                    // 로그인 성공, 로그인한 사용자 정보로 UI 업데이트
+                    // 회원가입 성공, 회원가입한 사용자 정보는 파베 등록
                     Log.d(TAG, "createUserWithEmail:success");
                     FirebaseUser user = mAuth.getCurrentUser();
                     Intent intent = new Intent(SignUpActivity.this, IntroActivity.class);
@@ -127,8 +161,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "등록 완료", Toast.LENGTH_SHORT).show();
                     finish();
                 }else {
-                    // If sign in fails, display a message to the user.
-                    // 로그인에 실패하면 사용자에게 메시지를 표시합니다.
+                    // 회원가입 에 실패하면 사용자에게 메시지를 표시합니다.
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
                     Toast.makeText(SignUpActivity.this, "등록 에러", Toast.LENGTH_SHORT).show();
                     return;
