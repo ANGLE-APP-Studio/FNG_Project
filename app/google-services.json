@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "314880037208-pgah5s3d2evkgk35imoud8304o4qff1c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fangle",
+            "certificate_hash": "a03656c9668f9b2c21c5e80593ceb977fe8603bd"
+          }
+        },
+        {
           "client_id": "314880037208-i5vqpb2ehhsl5cf33o2fv1nj9s4q7bjb.apps.googleusercontent.com",
           "client_type": 3
         }
