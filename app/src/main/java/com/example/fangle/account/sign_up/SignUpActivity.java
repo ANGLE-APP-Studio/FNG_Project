@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SignUpActivity extends AppCompatActivity {
-    //생년월일
+    //생년월일 입력관련 선언
     SimpleDateFormat mFormat_year = new SimpleDateFormat("yyyy");
     SimpleDateFormat mFormat_month = new SimpleDateFormat("MM");
     SimpleDateFormat mFormat_day = new SimpleDateFormat("dd");
@@ -30,11 +30,12 @@ public class SignUpActivity extends AppCompatActivity {
     private int year = Integer.parseInt(mFormat_year.format(date));
     private int month = Integer.parseInt(mFormat_month.format(date));
     private int day = Integer.parseInt(mFormat_day.format(date));
-
+    
+    // 레이아웃 관련 선언
     EditText sign_up_id,sign_up_password,sign_up_email,sign_up_phone_number,sign_up_nickname,sign_up_birthdate,sign_up_gender;
     Button birthdate_button,sign_up_button;
 
-    // 사용자가 입력한 값
+    // 사용자가 입력한 값 관련 선언
     public String id,password,email,phone_number,nickname,birthdate,gender;
 
     @Override
