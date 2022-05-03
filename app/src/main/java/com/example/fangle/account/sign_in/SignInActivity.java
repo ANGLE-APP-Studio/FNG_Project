@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class SignInActivity extends AppCompatActivity {
 
     // 파이어베이스 로그인 관련 선언
