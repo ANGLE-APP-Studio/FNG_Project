@@ -3,13 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/FNG_project/app/src/main/res/layout/activity_intro.xml" value="0.1" />
-        <entry key="..\:/FNG_project/app/src/main/res/layout/activity_main.xml" value="0.14175724637681159" />
-        <entry key="..\:/FNG_project/app/src/main/res/layout/activity_sign_in.xml" value="0.15806159420289856" />
-        <entry key="..\:/FNG_project/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
+        <entry key="..\:/FNG_project/app/src/main/res/layout/activity_community.xml" value="0.16893115942028986" />
+        <entry key="..\:/Fangle/app/src/main/res/layout/activity_community.xml" value="0.36614583333333334" />
+        <entry key="..\:/Fangle/app/src/main/res/layout/activity_intro.xml" value="0.36614583333333334" />
         <entry key="..\:/Fangle/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Fng_project/FNG_Project/app/src/main/res/layout/activity_intro.xml" value="0.36614583333333334" />
-        <entry key="..\:/Fng_project/FNG_Project/app/src/main/res/layout/activity_sign_in.xml" value="0.1" />
+        <entry key="..\:/Fangle/app/src/main/res/layout/activity_sign_in.xml" value="0.36614583333333334" />
+        <entry key="..\:/Fangle/app/src/main/res/layout/activity_sign_up.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>
