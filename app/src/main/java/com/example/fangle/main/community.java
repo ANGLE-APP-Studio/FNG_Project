@@ -18,6 +18,6 @@ public class community extends AppCompatActivity {
 
     public void join01Click(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("")
+        builder.setTitle("");
     }
 }
