@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.profile_read.ProfileReadActivity">
+
+    <View
+        android:id="@+id/member_view"
+        android:layout_width="321dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="44dp"
+        android:background="#D5DAF5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/nft_view"
+        android:layout_width="319dp"
+        android:layout_height="172dp"
+        android:layout_marginTop="40dp"
+        android:background="#D4D4D4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/member_view" />
+
+    <View
+        android:id="@+id/fan_club_view"
+        android:layout_width="319dp"
+        android:layout_height="148dp"
+        android:background="#D4D4D4"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <View
+        android:id="@+id/bottom_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="#D5DAF5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/User_Image"
+        android:layout_width="75dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/home_button"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/home_button"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="682dp" />
+
+    <ImageView
+        android:id="@+id/menu_button"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/menu_button"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="682dp" />
+
+    <ImageView
+        android:id="@+id/profile_button"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/proflie"
+        tools:layout_editor_absoluteX="320dp"
+        tools:layout_editor_absoluteY="682dp" />
+
+    <Button
+        android:id="@+id/member_secession_button"
+        android:layout_width="85dp"
+        android:layout_height="33dp"
+        android:text="회원탈퇴"
+        android:textSize="9dp"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="617dp" />
+
+    <TextView
+        android:id="@+id/privacypolicy_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="개인정보처리방침"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="657dp" />
+
+    <Button
+        android:id="@+id/Log_out_button"
+        android:layout_width="66dp"
+        android:layout_height="29dp"
+        android:text="로그아웃"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/member_view"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toStartOf="@+id/member_view"
+        app:layout_constraintTop_toTopOf="@+id/member_view" />
+
+    <TextView
+        android:id="@+id/nickname_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="닉네임"
+        app:layout_constraintEnd_toEndOf="@+id/member_view"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/member_view"
+        app:layout_constraintTop_toTopOf="@+id/member_view" />
+
+    <TextView
+        android:id="@+id/member_ranking_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="회원등급"
+        app:layout_constraintEnd_toEndOf="@+id/member_view"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/member_view"
+        app:layout_constraintTop_toBottomOf="@+id/nickname_text" />
+
+    <TextView
+        android:id="@+id/favorites_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="즐겨찾기"
+        app:layout_constraintEnd_toEndOf="@+id/member_view"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="@+id/member_view"
+        app:layout_constraintTop_toTopOf="@+id/member_view" />
+
+    <TextView
+        android:id="@+id/nft_collection_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="NFT 콜렉션"
+        app:layout_constraintEnd_toEndOf="@+id/nft_view"
+        app:layout_constraintStart_toStartOf="@+id/nft_view"
+        app:layout_constraintTop_toTopOf="@+id/nft_view" />
+
+    <TextView
+        android:id="@+id/fan_club_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="가입된 팬클럽"
+        tools:layout_editor_absoluteX="165dp"
+        tools:layout_editor_absoluteY="456dp" />
+
+    <Button
+        android:id="@+id/nft_Viewmore_button"
+        android:layout_width="62dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="4dp"
+        android:text="더보기"
+        android:textSize="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/nft_view"
+        app:layout_constraintEnd_toEndOf="@+id/nft_view"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/nft_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
