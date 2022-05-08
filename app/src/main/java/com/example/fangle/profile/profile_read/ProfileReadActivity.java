@@ -1,7 +1,11 @@
 package com.example.fangle.profile.profile_read;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.fangle.MainActivity;
 import com.example.fangle.R;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +55,28 @@ public class ProfileReadActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    // 하단바 구현
+    // 메뉴 이동
+    public void onClickMenu(View view) {
+
+    }
+
+    // 홈 이동
+    public void onClickHome(View view) {
+        Intent Home_intent = new Intent(this, MainActivity.class);
+        startActivity(Home_intent);
+    }
+
+    // 프로필 이동
+    public void onClickProfile(View view) {
+        // 만약 지금 위치가 자기 자신이면 이동 하지 말아라
+    }
+
+    // 개인 정보처리방침
+    public void onClickPrivacyPolicy(View view){
 
     }
 }
