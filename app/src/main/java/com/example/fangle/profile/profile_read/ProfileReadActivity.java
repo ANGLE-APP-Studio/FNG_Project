@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fangle.MainActivity;
 import com.example.fangle.R;
+import com.example.fangle.profile.profile_update.ProfileUpdateActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -52,7 +53,8 @@ public class ProfileReadActivity extends AppCompatActivity {
         member_modify_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent Home_intent = new Intent(ProfileReadActivity.this, ProfileUpdateActivity.class);
+                startActivity(Home_intent);
             }
         });
 
@@ -66,7 +68,7 @@ public class ProfileReadActivity extends AppCompatActivity {
 
     // 홈 이동
     public void onClickHome(View view) {
-        Intent Home_intent = new Intent(this, MainActivity.class);
+        Intent Home_intent = new Intent(ProfileReadActivity.this, MainActivity.class);
         startActivity(Home_intent);
     }
 
