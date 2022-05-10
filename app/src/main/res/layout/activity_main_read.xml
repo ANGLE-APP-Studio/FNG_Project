@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.main_read.Main_Read_Activity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Top_Bar_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="45dp" />
+
+    <View
+        android:id="@+id/Top_Bar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#D5DAF5"
+        app:layout_constraintBottom_toTopOf="@+id/Top_Bar_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/list_button"
+        android:layout_width="38dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/Top_Bar_guideline"
+        app:layout_constraintStart_toStartOf="@+id/Top_Bar"
+        app:layout_constraintTop_toTopOf="@+id/Top_Bar"
+        app:srcCompat="@drawable/list" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Fangle"
+        app:layout_constraintBottom_toBottomOf="@id/Top_Bar_guideline"
+        app:layout_constraintStart_toEndOf="@+id/list_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.615" />
+
+    <ImageView
+        android:id="@+id/setting_button"
+        android:layout_width="38dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/Top_Bar_guideline"
+        app:layout_constraintStart_toStartOf="@+id/Top_Bar"
+        app:layout_constraintTop_toTopOf="@+id/Top_Bar"
+        app:srcCompat="@drawable/list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
