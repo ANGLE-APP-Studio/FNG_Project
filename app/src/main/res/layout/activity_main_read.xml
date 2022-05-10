@@ -50,10 +50,10 @@
         android:id="@+id/setting_button"
         android:layout_width="38dp"
         android:layout_height="31dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="328dp"
         app:layout_constraintBottom_toTopOf="@+id/Top_Bar_guideline"
         app:layout_constraintStart_toStartOf="@+id/Top_Bar"
         app:layout_constraintTop_toTopOf="@+id/Top_Bar"
-        app:srcCompat="@drawable/list" />
+        app:srcCompat="@drawable/Setting" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
