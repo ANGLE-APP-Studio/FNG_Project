@@ -100,10 +100,11 @@ public class SignUpActivity extends AppCompatActivity {
         jspbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                get_data();
                 try {
                     String result;
                     CustomTask task = new CustomTask();
-                    result = task.execute("rain483","1234").get();
+                    result = task.execute(id,password).get();
                     Log.i("리턴 값",result);
                 }catch (Exception e){
 
