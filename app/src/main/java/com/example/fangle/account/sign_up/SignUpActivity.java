@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
     Button birthdate_button,sign_up_button,jspbutton;
 
     // 사용자가 입력한 값 관련 선언
-    public String id,password,email,phone_number,nickname,birthdate,gender;
+    public String id,password,email,phone_number,nickname,birthdate,gender,rank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
                 try {
                     String result;
                     CustomTask task = new CustomTask();
-                    result = task.execute(id,password).get();
+                    result = task.execute(id,password,email,phone_number,nickname,birthdate,gender,rank).get();
                     Log.i("리턴 값",result);
                 }catch (Exception e){
 
@@ -120,12 +120,19 @@ public class SignUpActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             try {
                 String str;
-                URL url = new URL("http://222.109.252.185:8080//data.jsp");
+                URL url = new URL("http://222.109.188.220:8080//sign_up/user_data_up.jsp");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");
                 OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-                sendMsg = "id="+strings[0]+"&pwd="+strings[1];
+                sendMsg = "UID="+strings[0]
+                        +"&PSW="+strings[1]
+                        + "&EML="+strings[2]
+                        +"&PNB="+strings[3]
+                        + "&NCK=" + strings[4]
+                        + "&BTD=" +strings[5]
+                        +"&GND=" +strings[6]
+                        + "&RNK=" + strings[7];
                 osw.write(sendMsg);
                 osw.flush();
                 if(conn.getResponseCode() == conn.HTTP_OK) {
@@ -197,6 +204,7 @@ public class SignUpActivity extends AppCompatActivity {
         nickname = sign_up_nickname.getText().toString(); // 사용자 닉네임
         birthdate = sign_up_birthdate.getText().toString(); //  사용자 생년월일
         gender = sign_up_gender.getText().toString(); // 사용자 성별
+        rank = "무료";
     }
 
 
