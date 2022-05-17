@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FANGLE">
         <activity
+            android:name=".WritingReadActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.main_read.MainReadActivity"
             android:exported="true">
             <intent-filter>
