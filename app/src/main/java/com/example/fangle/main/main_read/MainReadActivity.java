@@ -14,7 +14,7 @@ import android.widget.ScrollView;
 import com.example.fangle.R;
 
 public class MainReadActivity extends AppCompatActivity {
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
