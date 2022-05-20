@@ -22,39 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_weight="3"
+        app:menu="@menu/bottom_menu"
         android:background="@color/sky_blue"
         app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:id="@+id/com_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:weightSum="1"
-            app:srcCompat="@drawable/com_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
-        <ImageView
-            android:id="@+id/home_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:weightSum="1"
-            app:srcCompat="@drawable/home_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
-        <ImageView
-            android:id="@+id/profile_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:weightSum="1"
-            app:srcCompat="@drawable/profile_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <FrameLayout
@@ -66,29 +36,30 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <HorizontalScrollView
+            android:id="@+id/HorizontalScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/HorizontalScrollView">
+            tools:ignore="SpeakableTextPresentCheck">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="320dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/image1"/>
+                    android:src="@drawable/image1" />
 
                 <ImageView
                     android:layout_width="320dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/image2"/>
+                    android:src="@drawable/image2" />
 
                 <ImageView
                     android:layout_width="320dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/image3"/>
+                    android:src="@drawable/image3" />
 
             </LinearLayout>
 
