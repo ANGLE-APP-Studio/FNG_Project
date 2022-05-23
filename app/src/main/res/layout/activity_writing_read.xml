@@ -24,6 +24,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/add_button"
+        android:onClick="writing_create_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -31,9 +32,9 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="364dp"
         android:layout_height="610dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -44,9 +45,13 @@
             android:orientation="vertical">
 
             <ListView
+                android:id="@+id/writing_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:choiceMode="singleChoice" />
         </LinearLayout>
     </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
