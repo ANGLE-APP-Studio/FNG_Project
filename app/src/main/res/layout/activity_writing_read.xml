@@ -17,24 +17,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/imageButton"
         android:layout_width="42dp"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/cancel_button"
+        android:src="@drawable/add_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <FrameLayout
         android:layout_width="364dp"
         android:layout_height="610dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,44 +48,5 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
     </FrameLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="3"
-        android:background="@color/sky_blue"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:id="@+id/com_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:weightSum="1"
-            app:srcCompat="@drawable/com_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
-        <ImageView
-            android:id="@+id/home_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:weightSum="1"
-            app:srcCompat="@drawable/home_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
-        <ImageView
-            android:id="@+id/profile_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:weightSum="1"
-            app:srcCompat="@drawable/profile_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
