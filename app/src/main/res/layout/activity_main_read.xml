@@ -15,33 +15,6 @@
         app:contentInsetStart="0dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="-16dp">
-
-        <ImageView
-            android:id="@+id/list_button"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            app:srcCompat="@drawable/list"
-            android:layout_gravity="left"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Fangle"
-            android:textSize="20dp">
-        </TextView>
-
-        <ImageView
-            android:id="@+id/setting_button"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            app:srcCompat="@drawable/setting"
-            android:layout_gravity="right"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -49,105 +22,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_weight="3"
+        app:menu="@menu/bottom_menu"
+        app:itemIconTint="@drawable/bottom_navigation_color"
+        app:itemTextColor="@drawable/bottom_navigation_color"
         android:background="@color/sky_blue"
         app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:id="@+id/com_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:weightSum="1"
-            app:srcCompat="@drawable/com_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
-        <ImageView
-            android:id="@+id/home_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:weightSum="1"
-            app:srcCompat="@drawable/home_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
-        <ImageView
-            android:id="@+id/profile_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:weightSum="1"
-            app:srcCompat="@drawable/profile_be"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="21dp" />
-
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <FrameLayout
-        android:layout_width="320dp"
-        android:layout_height="121dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/HorizontalScrollView">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" >
-
-                <ImageView
-                    android:layout_width="320dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/image1"/>
-
-                <ImageView
-                    android:layout_width="320dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/image2"/>
-
-                <ImageView
-                    android:layout_width="320dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/image3"/>
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-<!--        <androidx.viewpager.widget.ViewPager-->
-<!--            android:id="@+id/viewPager"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content" />-->
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="354dp"
-        android:layout_height="355dp"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="parent" />
-    </FrameLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
