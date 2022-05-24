@@ -1,60 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.recipes4dev.examples.drawerlayoutexample.MainActivity"
-    tools:showIn="@layout/activity_main">
-
-  <Button
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      android:text="Open"
-      android:id="@+id/open" />
-
-  <Button
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintLeft_toRightOf="@id/open"
-      android:text="Close"
-      android:id="@+id/close" />
-
-  <CheckBox
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintLeft_toRightOf="@id/close"
-      app:layout_constraintBaseline_toBaselineOf="@id/close"
-      android:text="Lock"
-      android:id="@+id/lock" />
-
-  <android.support.v4.widget.DrawerLayout
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/open"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintBottom_toBottomOf="parent"
-      android:id="@+id/drawer">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="48sp"
-        android:text="CONTENTS"
-        android:background="#00BCD4"/>
-
-    <TextView
-        android:layout_width="400dp"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="48sp"
-        android:text="DRAWER"
-        android:background="#009688"
-        android:layout_gravity="left" />
-  </android.support.v4.widget.DrawerLayout>
-</android.support.constraint.ConstraintLayout>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/community"
+        android:title="커뮤니티"
+        />
+    <item
+        android:id="@+id/star"
+        android:icon="@drawable/outline_event_available_black_48"
+        android:title="일정표"
+        />
+    <item
+        android:id="@+id/cart"
+        android:icon="@drawable/palette"
+        android:title="NFT"
+        />
+  </group>
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/bug_report"
+        android:icon="@drawable/notifications"
+        android:title="알람"
+        />
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/profile"
+        android:title="프로필"
+        />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout
+"
+        android:title="로그아웃"
+        />
+  </group>
+</menu>
