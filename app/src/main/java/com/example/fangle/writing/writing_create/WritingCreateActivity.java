@@ -17,6 +17,7 @@ public class WritingCreateActivity extends AppCompatActivity {
     EditText writing_text;
     String receive,result;
     TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,8 @@ public class WritingCreateActivity extends AppCompatActivity {
         create_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // 다이렉트
                 result = writing_text.getText().toString();
                 if(result.length() != 0){
                     Intent intent01 = new Intent();
@@ -40,6 +43,9 @@ public class WritingCreateActivity extends AppCompatActivity {
                 }else{
                     setResult(RESULT_CANCELED);
                 }
+                //
+
+
                 finish();
             }
         });
