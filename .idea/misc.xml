@@ -3,24 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-        <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_list_lead.xml" value="0.309375" />
         <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_main_read.xml" value="0.34430379746835443" />
         <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_profile_read.xml" value="0.36614583333333334" />
-        <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_writing_create.xml" value="0.309375" />
-        <entry key="..\:/FNG_Project/app/src/main/res/menu/action_menu.xml" value="0.309375" />
-=======
-        <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
-        <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_main_read.xml" value="0.34430379746835443" />
-        <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_profile_read.xml" value="0.36614583333333334" />
->>>>>>> LGN-004
         <entry key="..\:/FNG_project/app/src/main/res/layout/activity_community.xml" value="0.16893115942028986" />
         <entry key="..\:/FNG_project/app/src/main/res/layout/activity_intro.xml" value="0.25" />
         <entry key="..\:/FNG_project/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/FNG_project/app/src/main/res/layout/activity_profile_read.xml" value="0.25" />
         <entry key="..\:/FNG_project/app/src/main/res/layout/activity_sign_in.xml" value="0.18" />
         <entry key="..\:/FNG_project/app/src/main/res/layout/activity_sign_up.xml" value="0.18" />
+        <entry key="..\:/FNG_project/app/src/main/res/layout/activity_writing_read.xml" value="0.16802536231884058" />
         <entry key="..\:/FNG_project/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.211" />
         <entry key="..\:/Fangle/app/src/main/res/layout/activity_community.xml" value="0.36614583333333334" />
         <entry key="..\:/Fangle/app/src/main/res/layout/activity_intro.xml" value="0.36614583333333334" />
