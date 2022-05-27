@@ -8,20 +8,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.fangle.R;
 import com.example.fangle.writing.writing_create.WritingCreateActivity;
+import com.example.fangle.writing.writing_post.WritingPostActivity;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class WritingReadActivity extends AppCompatActivity {
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     private ActivityResultLauncher<Intent> resultLauncher;
 
@@ -34,21 +38,31 @@ public class WritingReadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_writing_read);
 
         // listview 참조
-        writing_list = (ListView) findViewById(R.id.writing_list);
+        writing_list = (ListView) findViewById(R.id.comment_list);
         //adapter 참조
         adapter = new WritingListItemAdapter();
 
 
-        adapter.addItem(new WritingListItem("오늘입니다","분홍신"));
-        adapter.addItem(new WritingListItem("오늘입니다.","하늘"));
-        adapter.addItem(new WritingListItem("오늘입니다.","봄"));
+        adapter.addItem(new WritingListItem("오늘입니다","분홍신",getTime()));
         writing_list.setAdapter(adapter);
 
 
         writing_list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
+
+                //  리스트 아이템 에서
+                String Writing = ((WritingListItem)adapter.getItem(position)).getWriting();
+                String nickname = ((WritingListItem)adapter.getItem(position)).getNickname();
+                String date_created = ((WritingListItem)adapter.getItem(position)).getDate_Created();
+
                 // 클릭시 클 크게 보기
+                Intent post_intent = new Intent(WritingReadActivity.this, WritingPostActivity.class);
+                post_intent.putExtra("nickname",nickname);
+                post_intent.putExtra("writing",Writing);
+                post_intent.putExtra("date_created",date_created);
+                startActivity(post_intent);
+
             }
         });
 
@@ -60,24 +74,30 @@ public class WritingReadActivity extends AppCompatActivity {
             }
         });
 
-        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if(result.getResultCode() == RESULT_OK){
-                    Intent data_intent = result.getData();
-                    String data_result = data_intent.getExtras().getString("ResultData");
-                    adapter.addItem(new WritingListItem(data_result,"봄"));
-                    writing_list.setAdapter(adapter);
-                }
-                if(result.getResultCode() != RESULT_OK){
-                    adapter.addItem(new WritingListItem("NoData","봄"));
-                    writing_list.setAdapter(adapter);
-                }
-            }
-        });
+//        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+//            @Override
+//            public void onActivityResult(ActivityResult result) {
+//                if(result.getResultCode() == RESULT_OK){
+//                    Intent data_intent = result.getData();
+//                    String data_result = data_intent.getExtras().getString("ResultData");
+//                    adapter.addItem(new WritingListItem(data_result,"봄"));
+//                    writing_list.setAdapter(adapter);
+//                }
+//                if(result.getResultCode() != RESULT_OK){
+//                    adapter.addItem(new WritingListItem("NoData","봄"));
+//                    writing_list.setAdapter(adapter);
+//                }
+//            }
+//        });
+
 
     }
 
+    private String getTime(){
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
 
     // 글쓰는 엑티비티로 넘어가기
     public void writing_create_button(View view){

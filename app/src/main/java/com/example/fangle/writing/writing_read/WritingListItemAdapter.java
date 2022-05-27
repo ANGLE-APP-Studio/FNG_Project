@@ -2,6 +2,7 @@ package com.example.fangle.writing.writing_read;
 
 import android.app.LauncherActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.fangle.R;
+import com.example.fangle.writing.writing_post.WritingPostActivity;
 
 import java.util.ArrayList;
 
@@ -43,9 +45,12 @@ public class WritingListItemAdapter extends BaseAdapter {
 
         TextView writing = convertView.findViewById(R.id.writing);
         TextView nickname = convertView.findViewById(R.id.nickname);
+        TextView date_created = convertView.findViewById(R.id.Date_Created);
 
         nickname.setText(listItem.getNickname());
         writing.setText(listItem.getWriting());
+        date_created.setText(listItem.getDate_Created());
+
         return convertView;
     }
 

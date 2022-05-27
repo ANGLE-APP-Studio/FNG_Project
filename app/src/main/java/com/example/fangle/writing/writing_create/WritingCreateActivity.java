@@ -58,17 +58,17 @@ public class WritingCreateActivity extends AppCompatActivity {
                     setResult(RESULT_CANCELED);
                 }
                 //
-                
-                try {
-                    String result;
-                    WritingCreateActivity.CustomTask task = new WritingCreateActivity.CustomTask();
-                    result = task.execute(id,password,email,phone_number,nickname,birthdate,gender,rank).get();
-                    Log.i("리턴 값",result);
-                }catch (Exception e){
 
-                }
-
-                finish();
+//                try {
+//                    String result;
+//                    WritingCreateActivity.CustomTask task = new WritingCreateActivity.CustomTask();
+//                    result = task.execute(id,password,email,phone_number,nickname,birthdate,gender,rank).get();
+//                    Log.i("리턴 값",result);
+//                }catch (Exception e){
+//
+//                }
+//
+//                finish();
             }
         });
     }
@@ -122,7 +122,6 @@ public class WritingCreateActivity extends AppCompatActivity {
         ID = ""; // 게시글 ID
         TTL = ""; // 게시글 제목
         DSC = writing_text.getText().toString(); // 게시판 내용
-        TIM = ""; // 게시판 작성 시간
         DAT = ""; // 게시핀 작성 날짜
     }
 }
