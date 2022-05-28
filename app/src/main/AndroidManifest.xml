@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".bulletinboard.bulletinboard_create.BulletinboardCreateActivity"
-            android:exported="false" />
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
         <activity
             android:name=".bulletinboard.bulletinboard_read.BulletinboardReadActivity"
             android:exported="true">

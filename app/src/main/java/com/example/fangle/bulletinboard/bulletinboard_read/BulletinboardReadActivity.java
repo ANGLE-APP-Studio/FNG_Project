@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.fangle.R;
+import com.example.fangle.bulletinboard.bulletinboard_create.BulletinboardCreateActivity;
 import com.example.fangle.writing.writing_post.WritingPostActivity;
 import com.example.fangle.writing.writing_read.WritingListItem;
 import com.example.fangle.writing.writing_read.WritingReadActivity;
@@ -17,7 +18,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
 
     ListView board_list;
     BulletinboardListItemAdapter adapter;
-
+    String community_name = " 아직 미정 ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,5 +47,11 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void board_create(View view) {
+        Intent board_create_intent = new Intent(this, BulletinboardCreateActivity.class);
+        board_create_intent.putExtra("community_name",community_name);
+        startActivity(board_create_intent);
     }
 }
