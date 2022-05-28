@@ -23,7 +23,7 @@ public class ProfileReadActivity extends AppCompatActivity {
         nft_View_more_button = (Button) findViewById(R.id.nft_View_more_button);
         member_secession_button = (Button) findViewById(R.id.member_secession_button);
         member_modify_button = (Button) findViewById(R.id.member_modify_button);
-        
+
         // 로그아웃 기능 구현
         Log_out_button.setOnClickListener(new View.OnClickListener() {
             @Override
