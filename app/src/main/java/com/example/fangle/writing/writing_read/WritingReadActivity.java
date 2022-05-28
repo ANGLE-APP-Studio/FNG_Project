@@ -10,9 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.fangle.R;
 import com.example.fangle.writing.writing_create.WritingCreateActivity;
@@ -32,16 +31,21 @@ public class WritingReadActivity extends AppCompatActivity {
     ListView writing_list;
     WritingListItemAdapter adapter;
 
+    TextView board_name_text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_writing_read);
 
+        board_name_text = (TextView) findViewById(R.id.board_name_text);
+
         // listview 참조
-        writing_list = (ListView) findViewById(R.id.comment_list);
+        writing_list = (ListView) findViewById(R.id.bulletinboard_list);
         //adapter 참조
         adapter = new WritingListItemAdapter();
 
+        Intent bulletinboardRead_intent = getIntent();
+        board_name_text.setText(bulletinboardRead_intent.getStringExtra("board_name"));
 
         adapter.addItem(new WritingListItem("오늘입니다","분홍신",getTime()));
         writing_list.setAdapter(adapter);
@@ -74,21 +78,21 @@ public class WritingReadActivity extends AppCompatActivity {
             }
         });
 
-//        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-//            @Override
-//            public void onActivityResult(ActivityResult result) {
-//                if(result.getResultCode() == RESULT_OK){
-//                    Intent data_intent = result.getData();
-//                    String data_result = data_intent.getExtras().getString("ResultData");
-//                    adapter.addItem(new WritingListItem(data_result,"봄"));
-//                    writing_list.setAdapter(adapter);
-//                }
-//                if(result.getResultCode() != RESULT_OK){
-//                    adapter.addItem(new WritingListItem("NoData","봄"));
-//                    writing_list.setAdapter(adapter);
-//                }
-//            }
-//        });
+        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if(result.getResultCode() == RESULT_OK){
+                    Intent data_intent = result.getData();
+                    String data_result = data_intent.getExtras().getString("ResultData");
+                    adapter.addItem(new WritingListItem(data_result,"봄",getTime()));
+                    writing_list.setAdapter(adapter);
+                }
+                if(result.getResultCode() != RESULT_OK){
+                    adapter.addItem(new WritingListItem("NoData","봄",getTime()));
+                    writing_list.setAdapter(adapter);
+                }
+            }
+        });
 
 
     }

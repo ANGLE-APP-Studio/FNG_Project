@@ -14,7 +14,14 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".bulletinboard.bulletinboard_read.BulletinboardReadActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".writing.writing_post.WritingPostActivity"
             android:exported="false" />
@@ -24,11 +31,11 @@
         <activity
             android:name=".writing.writing_read.WritingReadActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".main.main_read.MainReadActivity"
