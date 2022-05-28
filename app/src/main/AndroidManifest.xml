@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FANGLE"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".bulletinboard.bulletinboard_read.BulletinboardReadActivity"
+            android:exported="false" />
+        <activity
             android:name=".writing.writing_post.WritingPostActivity"
             android:exported="false" />
         <activity
