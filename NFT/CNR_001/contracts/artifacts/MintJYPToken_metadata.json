@@ -466,7 +466,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"mintJYPToken.sol": "MintJYPToken"
+			"MintJYPToken.sol": "MintJYPToken"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -568,7 +568,7 @@
 				"dweb:/ipfs/QmVHocBeANMkq4TzVM7q9At5NSg1TEpT9D9vgJ5dGcvcPN"
 			]
 		},
-		"mintJYPToken.sol": {
+		"MintJYPToken.sol": {
 			"keccak256": "0x9acd2571f09324e14119782dd6e082b0b88a32f3d2aa35e454d0b3621fbeb635",
 			"license": "MIT",
 			"urls": [
