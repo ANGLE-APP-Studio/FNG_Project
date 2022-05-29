@@ -466,7 +466,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"MintJYPToken.sol": "MintJYPToken"
+			"mintJYPToken.sol": "MintJYPToken"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -568,11 +568,12 @@
 				"dweb:/ipfs/QmVHocBeANMkq4TzVM7q9At5NSg1TEpT9D9vgJ5dGcvcPN"
 			]
 		},
-		"MintJYPToken.sol": {
-			"keccak256": "0xd9a23d7be5e6ffcc5d2319b0428235efc3bbb471e3dffc66cac46ec046e98b46",
+		"mintJYPToken.sol": {
+			"keccak256": "0x9acd2571f09324e14119782dd6e082b0b88a32f3d2aa35e454d0b3621fbeb635",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://4d600f8629e0ebf41032a0ac32f1ec1b71c245821c95252f5bb8583d51c8fed4",
-				"dweb:/ipfs/QmedFnQc4BB8XArrrJ74jzjLQNsdJovmG9ALezKoUUhGWq"
+				"bzz-raw://b28ed2ca05d9482b646b51a75ef5217de21819e5d46b09f5f605368db7ecd541",
+				"dweb:/ipfs/QmNgVPgYvqEKciAhymHHh4YmJLTfmnT4eWfkx48rPBk3cQ"
 			]
 		}
 	},
