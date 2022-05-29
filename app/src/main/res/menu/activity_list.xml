@@ -1,37 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:tools="http://schemas.android.com/tools"
-<group android:checkableBehavior="single"
-tools:ignore="MissingConstraints">
-<item
-    android:id="@+id/account"
-    android:icon="@drawable/community"
-    android:title="커뮤니티"
-    />
-<item
-    android:id="@+id/star"
-    android:icon="@drawable/outline_event_available_black_48"
-    android:title="일정표"
-    />
-<item
-    android:id="@+id/cart"
-    android:icon="@drawable/palette"
-    android:title="NFT"
-    />
-</group>
-<group android:checkableBehavior="single">
-<item
-    android:id="@+id/bug_report"
-    android:icon="@drawable/notifications"
-    android:title="알람"
-    />
-<item
-    android:id="@+id/setting"
-    android:icon="@drawable/profile"
-    android:title="프로필"
-    />
-<item
-    android:id="@+id/logout"
-    android:icon="@drawable/logout"
-    android:title="로그아웃"
-    />
-</group>
-    </menu>
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single"
+    tools:ignore="MissingConstraints">
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/community"
+        android:title="커뮤니티"
+        />
+    <item
+        android:id="@+id/star"
+        android:icon="@drawable/outline_event_available_black_48"
+        android:title="일정표"
+        />
+    <item
+        android:id="@+id/cart"
+        android:icon="@drawable/palette"
+        android:title="NFT"
+        />
+    </group>
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/bug_report"
+        android:icon="@drawable/notifications"
+        android:title="알람"
+        />
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/profile"
+        android:title="프로필"
+        />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout"
+        android:title="로그아웃"
+        />
+    </group>
+</menu>
