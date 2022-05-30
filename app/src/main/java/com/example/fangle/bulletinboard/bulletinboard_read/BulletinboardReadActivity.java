@@ -19,6 +19,8 @@ public class BulletinboardReadActivity extends AppCompatActivity {
     ListView board_list;
     BulletinboardListItemAdapter adapter;
     String community_name = " 아직 미정 ";
+
+    //참고로 프로그램 정의서는 관리자 기능으로 분류 되어있어서 관리자 만 생성 버튼을 보이게 해야 해서 일단 인트로 에서 관리자 분류를 해야한다.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,8 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView parent, View v, int position, long id){
                 // 롱 클릭시 수정 삭제
+                Intent dialogintent = new Intent(BulletinboardReadActivity.this,BulletinboardDialogActivity.class);
+                startActivity(dialogintent);
                 return true;
             }
         });

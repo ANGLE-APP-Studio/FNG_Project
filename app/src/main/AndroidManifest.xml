@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FANGLE"
         android:usesCleartextTraffic="true">
+        <activity android:name=".bulletinboard.bulletinboard_update.BulletinboardUpdateActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
-            android:name=".BulletinboardDialogActivity"
-            android:exported="false" />
+            android:name=".bulletinboard.bulletinboard_read.BulletinboardDialogActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
             android:name=".bulletinboard.bulletinboard_create.BulletinboardCreateActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
