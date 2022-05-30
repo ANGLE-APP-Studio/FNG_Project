@@ -13,10 +13,10 @@
         android:theme="@style/Theme.FANGLE"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".WritingDialogActivity"
-            android:exported="false" />
+            android:name=".writing.writing_read.WritingDialogActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
         <activity
-            android:name=".WritingUpdateActivity"
+            android:name=".writing.writing_update.WritingUpdateActivity"
             android:exported="false" />
         <activity
             android:name=".writing.writing_post.WritingPostActivity"
