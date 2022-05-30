@@ -47,6 +47,14 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             }
         });
 
+        board_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView parent, View v, int position, long id){
+                // 롱 클릭시 수정 삭제
+                return true;
+            }
+        });
+
     }
 
     public void board_create(View view) {
