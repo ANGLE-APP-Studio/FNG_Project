@@ -45,9 +45,9 @@ android {
 
 dependencies {
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.google.firebase:firebase-analytics' //firebase 추가
-    implementation 'com.androidx.support:design:32.0.0'
+    //implementation 'com.androidx.support:design:32.0.0'
     implementation 'com.google.firebase:firebase-auth:21.0.5'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
