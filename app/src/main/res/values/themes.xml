@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.FANGLE" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- 타이틀 바를 없애줌 -->
-<!--        <item name="windowNoTitle">true</item>-->
+        <!--        <item name="windowNoTitle">true</item>-->
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/sky_blue</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -15,4 +15,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.FANGLE.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.FANGLE.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.FANGLE.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
