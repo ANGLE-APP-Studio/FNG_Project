@@ -11,39 +11,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#cecece"
-        android:textAlignment="center"
         android:text="JOIN US!"
+        android:textAlignment="center"
         android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
         android:id="@+id/jointext02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:text="커뮤니티"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jointext01" />
 
     <TextView
         android:id="@+id/jointext04"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
         android:text="회원가입"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jointext02" />
 
     <TextView
         android:id="@+id/jointext05"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
         android:text="유료 가입 코드"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jointext04" />
@@ -72,10 +72,10 @@
         android:id="@+id/Joinedit01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
         android:ems="16"
         android:inputType="textPersonName"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="24dp"
         android:text="16자 이내"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/jointext05"
@@ -106,8 +106,8 @@
         android:id="@+id/joinbutton02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="40dp"
         android:layout_marginTop="32dp"
+        android:layout_marginRight="40dp"
         android:text="가입"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jointext05" />
