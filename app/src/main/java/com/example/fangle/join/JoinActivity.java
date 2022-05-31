@@ -10,7 +10,7 @@ import android.widget.RadioButton;
 
 import com.example.fangle.R;
 
-public class JoinActivity extends AppCompatActivity implements View.OnClickListener {
+public class JoinActivity extends AppCompatActivity {
 
     Button btn01, btn02;
     RadioButton radiobutton01, radiobutton02;
@@ -27,17 +27,12 @@ public class JoinActivity extends AppCompatActivity implements View.OnClickListe
         radiobutton02 = (RadioButton) findViewById(R.id.joinradio02);
 
         btn01 = (Button) findViewById(R.id.joinbutton01);
-        btn01.setOnClickListener(this);
 
         btn02 = (Button) findViewById(R.id.joinbutton02);
-        btn02.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-
 
     }
+
 }
+
 
 
