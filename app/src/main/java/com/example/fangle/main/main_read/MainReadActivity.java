@@ -10,6 +10,8 @@ import android.widget.CalendarView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.fangle.profile.profile_read.ProfileReadFragment;
 import com.example.fangle.R;
@@ -18,7 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainReadActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-
+    DrawerLayout drawerLayout;
     public CalendarView calendarView;
 
     // 하단바 Fragment
@@ -30,8 +32,9 @@ public class MainReadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_read);
+        setContentView(R.layout.activity_main_list);
 
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -81,6 +84,7 @@ public class MainReadActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id == android.R.id.home){
             Toast.makeText(this,"메뉴", Toast.LENGTH_LONG).show();
+            drawerLayout.openDrawer(GravityCompat.START);
         }
         if (id == R.id.setting_item){
             Toast.makeText(this,"셋팅", Toast.LENGTH_LONG).show();
