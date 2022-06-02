@@ -17,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< HEAD
     <Button
         android:id="@+id/button01"
         android:layout_width="wrap_content"
@@ -30,8 +29,6 @@
         app:layout_constraintTop_toTopOf="@+id/guideline7"
         tools:ignore="MissingConstraints" />
 
-=======
->>>>>>> afa6f55ca7181ff787549cc0af2ffd9d35da1961
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
@@ -142,6 +139,7 @@
         android:id="@+id/button07"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:text="Button"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.555"
