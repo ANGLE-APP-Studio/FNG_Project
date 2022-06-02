@@ -1,4 +1,4 @@
-package com.example.fangle.main;
+package com.example.fangle.community.community_read;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.fangle.R;
 
-public class CommunityActivity extends AppCompatActivity {
+public class CommunityReadActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

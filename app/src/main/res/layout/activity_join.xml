@@ -70,8 +70,8 @@
 
     <EditText
         android:id="@+id/Joinedit01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="266dp"
+        android:layout_height="44dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
         android:ems="16"

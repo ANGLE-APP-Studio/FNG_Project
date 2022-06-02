@@ -81,7 +81,7 @@
         android:id="@+id/artist_name01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="아티스트 이름"
+        android:text="르세라핌"
         android:layout_marginTop="8dp"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"

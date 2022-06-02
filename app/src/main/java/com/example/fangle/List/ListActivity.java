@@ -1,0 +1,18 @@
+package com.example.fangle.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.example.fangle.R;
+
+public class ListActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.menu.activity_list);
+
+
+    }
+
+}

@@ -14,6 +14,7 @@ import com.example.fangle.MainActivity;
 import com.example.fangle.R;
 import com.example.fangle.account.sign_up.SignUpActivity;
 import com.example.fangle.intro.IntroActivity;
+import com.example.fangle.main.main_read.MainReadActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -139,7 +140,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) { //update ui code here
         if (user != null) {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, MainReadActivity.class);
             startActivity(intent);
             finish();
         }
