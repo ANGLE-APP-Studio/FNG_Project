@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_bulletinboard_create.xml" value="0.322463768115942" />
+        <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_bulletinboard_dialog.xml" value="0.234375" />
+        <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_bulletinboard_read.xml" value="0.322463768115942" />
         <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_community.xml" value="0.24947916666666667" />
         <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_join.xml" value="0.234375" />
         <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_list_lead.xml" value="0.322463768115942" />

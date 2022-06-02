@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.fangle.R;
+import com.example.fangle.bulletinboard.bulletinboard_read.BulletinboardReadActivity;
 import com.example.fangle.join.JoinActivity;
 
 public class CommunityReadFragment extends Fragment {
@@ -48,7 +49,10 @@ public class CommunityReadFragment extends Fragment {
         imageButton01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                artist_name = artist_name01.getText().toString();
+                Intent borard_intent = new Intent(getActivity(), BulletinboardReadActivity.class);
+                borard_intent.putExtra("artist_name",artist_name);
+                startActivity(borard_intent);
             }
         });
 

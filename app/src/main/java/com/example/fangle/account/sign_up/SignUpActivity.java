@@ -54,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
     private int month = Integer.parseInt(mFormat_month.format(date));
     private int day = Integer.parseInt(mFormat_day.format(date));
 
+
     // 파이어베이스 회원가입 관련 선언
     private static final String TAG = "SignUpActivity";
     private FirebaseAuth mAuth;

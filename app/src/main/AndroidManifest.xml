@@ -10,8 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.FANGLE">
+        android:theme="@style/Theme.FANGLE"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".join.JoinActivity"
             android:theme="@android:style/Theme.Dialog" />
@@ -23,7 +23,24 @@
             android:exported="false" />
         <activity
             android:name=".main.main_read.MainReadActivity"
-            android:exported="true" >
+            android:exported="true" />
+
+        <activity
+            android:name=".bulletinboard.bulletinboard_create.BulletinboardCreateActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+        <activity
+            android:name=".bulletinboard.bulletinboard_read.BulletinboardReadActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".writing.writing_post.WritingPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".writing.writing_create.WritingCreateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".writing.writing_read.WritingReadActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".account.sign_up.SignUpActivity"
