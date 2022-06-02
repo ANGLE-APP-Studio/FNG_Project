@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FANGLE"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".BulletinboardDialogActivity"
+            android:name=".bulletinboard.bulletinboard_read.BulletinboardDialogActivity"
             android:exported="false" />
         <activity
             android:name=".bulletinboard.bulletinboard_create.BulletinboardCreateActivity"
