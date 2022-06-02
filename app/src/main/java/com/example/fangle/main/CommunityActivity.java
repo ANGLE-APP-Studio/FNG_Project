@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.fangle.R;
 
-public class community extends AppCompatActivity {
+public class CommunityActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

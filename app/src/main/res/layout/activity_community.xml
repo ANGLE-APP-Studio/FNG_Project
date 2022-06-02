@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.community">
+    tools:context=".main.CommunityActivity">
 
     <TextView
         android:id="@+id/textview1"
@@ -174,6 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="아티스트 이름"
+        android:layout_marginTop="8dp"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
 <<<<<<< HEAD
@@ -249,6 +250,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:text="아티스트 이름 "
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -256,6 +258,9 @@
         app:layout_constraintTop_toBottomOf="@+id/button05" />
 =======
         android:layout_marginTop="16dp"
+=======
+        android:layout_marginTop="8dp"
+>>>>>>> CTR-002
         android:text="아티스트 이름 "
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -269,6 +274,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:text="아티스트 이름 "
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
@@ -276,6 +282,9 @@
         app:layout_constraintTop_toBottomOf="@+id/button06" />
 =======
         android:layout_marginTop="16dp"
+=======
+        android:layout_marginTop="8dp"
+>>>>>>> CTR-002
         android:text="아티스트 이름 "
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
@@ -290,6 +299,7 @@
         android:id="@+id/artist_name07"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="아티스트 이름 "
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -304,6 +314,7 @@
         android:id="@+id/artist_name08"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="아티스트 이름 "
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -320,6 +331,7 @@
         android:id="@+id/artist_name09"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="아티스트 이름 "
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -361,7 +373,7 @@
 =======
         android:layout_width="80dp"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.457"
@@ -373,6 +385,7 @@
         android:id="@+id/join03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="join!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -382,6 +395,7 @@
         android:id="@+id/join04"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -391,6 +405,7 @@
         android:id="@+id/join05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -400,6 +415,7 @@
         android:id="@+id/join06"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -410,9 +426,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         android:layout_marginTop="24dp"
 >>>>>>> afa6f55ca7181ff787549cc0af2ffd9d35da1961
+=======
+        android:layout_marginTop="8dp"
+>>>>>>> CTR-002
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -423,10 +443,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
 =======
         android:layout_marginTop="24dp"
+=======
+        android:layout_marginTop="8dp"
+>>>>>>> CTR-002
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.49"
@@ -439,6 +463,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -446,6 +471,9 @@
 
 =======
         android:layout_marginTop="24dp"
+=======
+        android:layout_marginTop="8dp"
+>>>>>>> CTR-002
         android:text="join!"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.49"
@@ -487,7 +515,7 @@
         android:id="@+id/imageButton04"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
@@ -533,7 +561,6 @@
         android:id="@+id/imageButton09"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="32dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline9"

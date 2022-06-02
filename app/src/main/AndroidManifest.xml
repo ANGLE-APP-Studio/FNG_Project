@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.FANGLE">
-
+        <activity
+            android:name=".JoinActivity"
+            android:exported="false" />
         <activity
             android:name=".profile.profile_update.ProfileUpdateActivity"
             android:theme="@android:style/Theme.Dialog" />
