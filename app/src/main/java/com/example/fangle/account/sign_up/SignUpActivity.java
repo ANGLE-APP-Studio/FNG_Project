@@ -3,12 +3,13 @@ package com.example.fangle.account.sign_up;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask; //
+import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,8 +27,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.IOException;//
+import java.io.BufferedReader;//
+import java.io.InputStreamReader;//
+import java.io.OutputStreamWriter;//
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import java.net.HttpURLConnection;//
+import java.net.MalformedURLException;//
+import java.net.URL; //
 
 
 
@@ -50,15 +60,19 @@ public class SignUpActivity extends AppCompatActivity {
 
     // 레이아웃 관련 선언
     EditText sign_up_id,sign_up_password,sign_up_email,sign_up_phone_number,sign_up_nickname,sign_up_birthdate,sign_up_gender;
-    Button birthdate_button,sign_up_button;
+    Button birthdate_button,sign_up_button,jspbutton;
 
     // 사용자가 입력한 값 관련 선언
-    public String id,password,email,phone_number,nickname,birthdate,gender;
+    public String id,password,email,phone_number,nickname,birthdate,gender,rank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        // jsp
+//      CustomTask task = new CustomTask();
+//      task.execute("rain483","1234");
 
         // 파이어베이스 mAuth
         mAuth = FirebaseAuth.getInstance();
@@ -73,6 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         birthdate_button = (Button) findViewById(R.id.birthdate_button);
         sign_up_button = (Button) findViewById(R.id.sign_up_button);
+        jspbutton = (Button) findViewById(R.id.jspbutton);
 
         birthdate_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +96,65 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        // jsp테스트
+        jspbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                get_data();
+                try {
+                    String result;
+                    CustomTask task = new CustomTask();
+                    result = task.execute(id,password,email,phone_number,nickname,birthdate,gender,rank).get();
+                    Log.i("리턴 값",result);
+                }catch (Exception e){
 
+                }
+            }
+        });
 
+    }
+
+    class CustomTask extends AsyncTask<String, Void, String> {
+        String sendMsg, receiveMsg;
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                String str;
+                URL url = new URL("http://222.109.188.220:8080//sign_up/user_data_up.jsp");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                conn.setRequestMethod("POST");
+                OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
+                sendMsg = "UID="+strings[0]
+                        +"&PSW="+strings[1]
+                        + "&EML="+strings[2]
+                        +"&PNB="+strings[3]
+                        + "&NCK=" + strings[4]
+                        + "&BTD=" +strings[5]
+                        +"&GND=" +strings[6]
+                        + "&RNK=" + strings[7];
+                osw.write(sendMsg);
+                osw.flush();
+                if(conn.getResponseCode() == conn.HTTP_OK) {
+                    InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "EUC-KR");
+                    BufferedReader reader = new BufferedReader(tmp);
+                    StringBuffer buffer = new StringBuffer();
+                    while ((str = reader.readLine()) != null) {
+                        buffer.append(str);
+                    }
+                    receiveMsg = buffer.toString();
+
+                } else {
+                    Log.i("통신 결과", conn.getResponseCode()+"에러");
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return receiveMsg;
+        }
     }
 
     // 회원가입 버튼을 눌르면 나오는 다이얼로그
@@ -132,6 +204,7 @@ public class SignUpActivity extends AppCompatActivity {
         nickname = sign_up_nickname.getText().toString(); // 사용자 닉네임
         birthdate = sign_up_birthdate.getText().toString(); //  사용자 생년월일
         gender = sign_up_gender.getText().toString(); // 사용자 성별
+        rank = "무료";
     }
 
 
