@@ -12,16 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FANGLE">
         <activity
-            android:name=".MainReadListActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main_read_list"
-            android:theme="@style/Theme.FANGLE.NoActionBar" />
-        <activity
             android:name=".List.ListActivity"
             android:exported="false" />
         <activity
             android:name=".main.main_read.MainReadActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".account.sign_up.SignUpActivity"
             android:exported="false" />
@@ -31,11 +32,11 @@
         <activity
             android:name=".profile.profile_read.ProfileReadActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".intro.IntroActivity"
