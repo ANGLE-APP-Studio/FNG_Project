@@ -74,6 +74,9 @@ public class WritingReadActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView parent, View v, int position, long id){
                 // 롱 클릭시 수정 삭제
+                // 다이얼 로그를 불러들이고 그 안에 수정 삭제 기능을 넣는다.
+                Intent writing_dialog = new Intent(WritingReadActivity.this,WritingDialogActivity.class);
+                startActivity(writing_dialog);
                 return true;
             }
         });
