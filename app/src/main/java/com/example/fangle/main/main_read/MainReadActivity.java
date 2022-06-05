@@ -3,6 +3,7 @@ package com.example.fangle.main.main_read;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.fangle.community.community_read.CommunityReadFragment;
+import com.example.fangle.nft.nft_read.NftReadActivity;
 import com.example.fangle.profile.profile_read.ProfileReadFragment;
 import com.example.fangle.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -79,7 +81,8 @@ public class MainReadActivity extends AppCompatActivity {
                    case R.id.star: // 일정표
 
                    case R.id.cart: // NFT
-
+                       Intent nft_intent = new Intent(MainReadActivity.this, NftReadActivity.class);
+                       startActivity(nft_intent);
                    case R.id.bug_report: // 알람
 
                    case R.id.profile: // 프로필
@@ -88,14 +91,9 @@ public class MainReadActivity extends AppCompatActivity {
 
                }
 
-
                 return true;
             }
         });
-
-
-
-
 
         // 홈버튼 활성화 및 홈버튼 이미지 변경
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
