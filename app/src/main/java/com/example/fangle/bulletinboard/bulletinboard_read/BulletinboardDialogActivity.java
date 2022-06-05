@@ -29,6 +29,7 @@ public class BulletinboardDialogActivity extends Activity {
             public void onClick(View v) {
                 Intent update = new Intent(BulletinboardDialogActivity.this, BulletinboardUpdateActivity.class);
                 startActivity(update);
+                finish();
             }
         });
 

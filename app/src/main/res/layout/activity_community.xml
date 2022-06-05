@@ -75,8 +75,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="667dp" />
 
-    //아티스트 이름 지정
-
     <TextView
         android:id="@+id/artist_name01"
         android:layout_width="wrap_content"

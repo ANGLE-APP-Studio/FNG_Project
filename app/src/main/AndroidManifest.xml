@@ -12,46 +12,49 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FANGLE"
         android:usesCleartextTraffic="true">
-        <activity android:name=".bulletinboard.bulletinboard_update.BulletinboardUpdateActivity"
+        <activity
+            android:name=".nft.nft_read.NftReadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".bulletinboard.bulletinboard_update.BulletinboardUpdateActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
-        <activity android:name=".bulletinboard.bulletinboard_read.BulletinboardDialogActivity"
+        <activity
+            android:name=".bulletinboard.bulletinboard_read.BulletinboardDialogActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
             android:name=".join.JoinActivity"
-            android:theme="@android:style/Theme.Dialog" />
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
             android:name=".profile.profile_update.ProfileUpdateActivity"
             android:theme="@android:style/Theme.Dialog" />
         <activity
-            android:name=".List.ListActivity"
-            android:exported="false" />
-        <activity
             android:name=".main.main_read.MainReadActivity"
             android:exported="true" />
-
         <activity
             android:name=".bulletinboard.bulletinboard_create.BulletinboardCreateActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
             android:name=".bulletinboard.bulletinboard_read.BulletinboardReadActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".writing.writing_read.WritingDialogActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
             android:name=".writing.writing_update.WritingUpdateActivity"
             android:exported="false" />
         <activity
             android:name=".writing.writing_post.WritingPostActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".writing.writing_create.WritingCreateActivity"
             android:exported="false" />
         <activity
             android:name=".writing.writing_read.WritingReadActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
+        <activity
+            android:name=".profile.profile_delete.ProfileDeleteActivity"
+            android:exported="false" />
         <activity
             android:name=".account.sign_up.SignUpActivity"
             android:exported="false" />
@@ -60,15 +63,15 @@
             android:exported="false" />
         <activity
             android:name=".profile.profile_read.ProfileReadActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".intro.IntroActivity"
             android:exported="true">
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

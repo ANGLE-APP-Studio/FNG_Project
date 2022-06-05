@@ -17,6 +17,7 @@ import com.example.fangle.community.community_read.CommunityReadFragment;
 import com.example.fangle.profile.profile_read.ProfileReadFragment;
 import com.example.fangle.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainReadActivity extends AppCompatActivity {
 
@@ -65,6 +66,33 @@ public class MainReadActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                menuItem.setChecked(true);
+                drawerLayout.closeDrawers();
+               switch (menuItem.getItemId()){
+                   case R.id.account://커뮤니티
+                       Toast.makeText(MainReadActivity.this,"커뮤니티", Toast.LENGTH_LONG).show();
+                   case R.id.star: // 일정표
+
+                   case R.id.cart: // NFT
+
+                   case R.id.bug_report: // 알람
+
+                   case R.id.profile: // 프로필
+
+                   case R.id.logout: // 로그아웃
+
+               }
+
+
+                return true;
+            }
+        });
+
 
 
 

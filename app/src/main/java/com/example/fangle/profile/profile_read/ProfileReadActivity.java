@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fangle.MainActivity;
 import com.example.fangle.R;
+
+import com.example.fangle.profile.profile_delete.ProfileDeleteActivity;
 import com.example.fangle.profile.profile_update.ProfileUpdateActivity;
 
 import android.content.Intent;
@@ -45,7 +47,8 @@ public class ProfileReadActivity extends AppCompatActivity {
         member_secession_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent secession_intent = new Intent(ProfileReadActivity.this, ProfileDeleteActivity.class);
+                startActivity(secession_intent);
             }
         });
 

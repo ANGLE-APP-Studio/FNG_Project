@@ -2,17 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".join.JoinActivity">
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/jointext01"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#cecece"
+        android:background="@color/sky_blue"
         android:text="JOIN US!"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,9 +52,10 @@
         android:id="@+id/joinradio01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="20dp"
         android:text="무료 회원"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/jointext04"
         app:layout_constraintTop_toBottomOf="@+id/jointext03" />
 
@@ -63,8 +64,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="28dp"
         android:text="유료 회원"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jointext03" />
 
@@ -98,6 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="32dp"
+        android:background="@color/sky_blue"
         android:text="취소"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jointext05" />
@@ -108,6 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginRight="40dp"
+        android:background="@color/sky_blue"
         android:text="가입"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jointext05" />

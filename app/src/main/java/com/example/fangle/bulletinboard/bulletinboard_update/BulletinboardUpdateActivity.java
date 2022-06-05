@@ -32,7 +32,7 @@ public class BulletinboardUpdateActivity extends Activity {
         cancle_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
             }
         });
     }
