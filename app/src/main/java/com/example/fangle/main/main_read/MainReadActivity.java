@@ -14,12 +14,20 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.fangle.account.sign_in.SignInActivity;
+import com.example.fangle.account.user_data.UserData;
 import com.example.fangle.community.community_read.CommunityReadFragment;
+import com.example.fangle.intro.IntroActivity;
 import com.example.fangle.nft.nft_read.NftReadActivity;
 import com.example.fangle.profile.profile_read.ProfileReadFragment;
 import com.example.fangle.R;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Objects;
 
 public class MainReadActivity extends AppCompatActivity {
 
@@ -32,6 +40,9 @@ public class MainReadActivity extends AppCompatActivity {
     MainReadFragment mainReadFragment;
     CommunityReadFragment communityReadFragment;
 
+    SignInActivity signInActivity;
+
+
     // 여기에 입력
 
     @Override
@@ -42,6 +53,10 @@ public class MainReadActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        signInActivity = new SignInActivity();
+
+        int sign = UserData.getInstance().getSign();
 
         //프레그면트
         profileReadFragment = new ProfileReadFragment();
@@ -77,7 +92,8 @@ public class MainReadActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                switch (menuItem.getItemId()){
                    case R.id.account://커뮤니티
-                       Toast.makeText(MainReadActivity.this,"커뮤니티", Toast.LENGTH_LONG).show();
+                       getSupportFragmentManager().beginTransaction().replace(R.id.container, communityReadFragment).commit();
+                       return true;
                    case R.id.star: // 일정표
 
                    case R.id.cart: // NFT
@@ -86,12 +102,19 @@ public class MainReadActivity extends AppCompatActivity {
                    case R.id.bug_report: // 알람
 
                    case R.id.profile: // 프로필
-
+                       getSupportFragmentManager().beginTransaction().replace(R.id.container, profileReadFragment).commit();
+                       return true;
                    case R.id.logout: // 로그아웃
+                       if(sign == 0){
+                           UserData.getInstance().reset();
+                           finish();
+                       }else if(sign == 1){
+                           signInActivity.signOut();
+                       }
 
                }
 
-                return true;
+                return false;
             }
         });
 

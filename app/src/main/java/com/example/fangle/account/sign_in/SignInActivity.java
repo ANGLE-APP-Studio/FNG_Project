@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import com.example.fangle.MainActivity;
 import com.example.fangle.R;
 import com.example.fangle.account.sign_up.SignUpActivity;
+import com.example.fangle.account.user_data.UserData;
 import com.example.fangle.intro.IntroActivity;
 import com.example.fangle.main.main_read.MainReadActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -32,6 +35,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class SignInActivity extends AppCompatActivity {
 
+    private static final String TAG = "";
     // 구글 로그인
     private FirebaseAuth mAuth = null;
     private GoogleSignInClient mGoogleSignInClient;
@@ -44,6 +48,7 @@ public class SignInActivity extends AppCompatActivity {
     EditText sign_in_id,sign_in_password;
     Button sign_in_button,socialLoginButton;
 
+    UserData userData;
     // 사용자가 입력한 로그인 정보 값 선언
     String id,password;
 
@@ -57,7 +62,6 @@ public class SignInActivity extends AppCompatActivity {
 
         socialLoginButton = (Button) findViewById(R.id.social_login_button);
         sign_in_button = (Button) findViewById(R.id.sign_in_button);
-
         // 구글 로그인
         mAuth = FirebaseAuth.getInstance();
 
@@ -93,6 +97,9 @@ public class SignInActivity extends AppCompatActivity {
     public void get_sign_in_data(){
         id = sign_in_id.getText().toString().trim();
         password = sign_in_password.getText().toString().trim();
+        UserData.getInstance().setUserID(id);
+        UserData.getInstance().setSign(0);
+        UserData.getInstance().setUserPW(password);
     }
 
     // [START signin]
@@ -114,6 +121,36 @@ public class SignInActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
             }
+            handleSignInResult(task);
+        }
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount acct = completedTask.getResult(ApiException.class);
+
+            if (acct != null) {
+                String personName = acct.getDisplayName();
+                UserData.getInstance().setUserID(personName);
+                UserData.getInstance().setSign(1);
+                String personGivenName = acct.getGivenName();
+                String personFamilyName = acct.getFamilyName();
+                String personEmail = acct.getEmail();
+                String personId = acct.getId();
+                Uri personPhoto = acct.getPhotoUrl();
+
+                Log.d(TAG, "handleSignInResult:personName "+personName);
+                Log.d(TAG, "handleSignInResult:personGivenName "+personGivenName);
+                Log.d(TAG, "handleSignInResult:personEmail "+personEmail);
+                Log.d(TAG, "handleSignInResult:personId "+personId);
+                Log.d(TAG, "handleSignInResult:personFamilyName "+personFamilyName);
+                Log.d(TAG, "handleSignInResult:personPhoto "+personPhoto);
+            }
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
+
         }
     }
 
@@ -126,7 +163,7 @@ public class SignInActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(SignInActivity.this, "구글 로그인 인증 성공", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, "구글 로그인", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
@@ -153,13 +190,24 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SignInActivity.this, MainReadActivity.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     Toast.makeText(SignInActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    public void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                    }
+                });
     }
 
 }

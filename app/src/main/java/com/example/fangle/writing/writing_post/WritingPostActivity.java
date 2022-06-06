@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.fangle.R;
+import com.example.fangle.account.user_data.UserData;
 import com.example.fangle.comment.comment_read.CommentListItem;
 import com.example.fangle.comment.comment_read.CommentListItemAdapter;
 import com.example.fangle.writing.writing_read.WritingListItem;
@@ -35,6 +36,7 @@ public class WritingPostActivity extends AppCompatActivity {
         write_date = (TextView) findViewById(R.id.write_date);
         writing2 = (TextView) findViewById(R.id.writing2);
 
+        String userid = UserData.getInstance().getUserID();
         // 댓글
         comment_create = (EditText) findViewById(R.id.comment_create);
         comment_button = (Button) findViewById(R.id.comment_button);
@@ -48,7 +50,7 @@ public class WritingPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String comment = comment_create.getText().toString();
-                adapter.addItem(new CommentListItem("이규현",comment));
+                adapter.addItem(new CommentListItem(userid,comment));
                 bulletinboard_list.setAdapter(adapter);
 
             }

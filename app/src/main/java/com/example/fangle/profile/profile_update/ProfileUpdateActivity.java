@@ -3,6 +3,7 @@ package com.example.fangle.profile.profile_update;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,6 +15,7 @@ import com.example.fangle.R;
 public class ProfileUpdateActivity extends Activity {
     EditText user_phone_number,user_nickname,user_birthdate,user_gender;
     Button user_profile_update;
+    String result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -30,6 +32,15 @@ public class ProfileUpdateActivity extends Activity {
         user_profile_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                result = user_nickname.getText().toString();
+                if(result.length() != 0){
+                    Intent intent01 = new Intent();
+                    intent01.putExtra("ResultData", result);
+                    setResult(RESULT_OK, intent01);
+                }else{
+                    setResult(RESULT_CANCELED);
+                }
 
                 finish();
             }

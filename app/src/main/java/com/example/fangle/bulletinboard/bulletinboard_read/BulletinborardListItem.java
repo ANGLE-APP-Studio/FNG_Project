@@ -12,7 +12,7 @@ public class BulletinborardListItem {
         this.board_name = board_name;
     }
 
-    BulletinborardListItem(String board_name){
+    public BulletinborardListItem(String board_name){
         this.board_name = board_name;
     }
 

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.fangle.R;
+import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
 import com.example.fangle.writing.writing_post.WritingPostActivity;
 
 import java.util.ArrayList;
@@ -56,5 +57,13 @@ public class WritingListItemAdapter extends BaseAdapter {
 
     public void addItem(WritingListItem item){
         items.add(item);
+    }
+
+    public void remove(int position) {
+        items.remove(position);
+    }
+
+    public void set(int position, WritingListItem name) {
+        items.set(position,name);
     }
 }

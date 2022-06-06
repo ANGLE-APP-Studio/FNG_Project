@@ -5,6 +5,8 @@ public class WritingListItem {
     private String nickname;
     private String date_created;
 
+
+
     public String getWriting() {
         return writing;
     }
@@ -34,4 +36,6 @@ public class WritingListItem {
         this.writing = writing;
         this.date_created = date_created;
     }
+
 }
+

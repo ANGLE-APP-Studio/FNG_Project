@@ -88,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         birthdate_button = (Button) findViewById(R.id.birthdate_button);
         sign_up_button = (Button) findViewById(R.id.sign_up_button);
-        jspbutton = (Button) findViewById(R.id.jspbutton);
+//        jspbutton = (Button) findViewById(R.id.jspbutton);
 
         birthdate_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,21 +97,21 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        // jsp테스트
-        jspbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                get_data();
-                try {
-                    String result;
-                    CustomTask task = new CustomTask();
-                    result = task.execute(id,password,email,phone_number,nickname,birthdate,gender,rank).get();
-                    Log.i("리턴 값",result);
-                }catch (Exception e){
-
-                }
-            }
-        });
+//        // jsp테스트
+//        jspbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                get_data();
+//                try {
+//                    String result;
+//                    CustomTask task = new CustomTask();
+//                    result = task.execute(id,password,email,phone_number,nickname,birthdate,gender,rank).get();
+//                    Log.i("리턴 값",result);
+//                }catch (Exception e){
+//
+//                }
+//            }
+//        });
 
     }
 

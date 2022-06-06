@@ -57,7 +57,8 @@ public class WritingCreateActivity extends AppCompatActivity {
                 }else{
                     setResult(RESULT_CANCELED);
                 }
-                //
+
+                finish();
 
 //                try {
 //                    String result;
@@ -68,7 +69,7 @@ public class WritingCreateActivity extends AppCompatActivity {
 //
 //                }
 //
-//                finish();
+
             }
         });
     }

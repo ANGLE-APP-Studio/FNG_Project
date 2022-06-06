@@ -53,4 +53,12 @@ public class BulletinboardListItemAdapter extends BaseAdapter {
         items.add(item);
     }
 
+    public void remove(int position) {
+        items.remove(position);
+    }
+
+
+    public void set(int position, BulletinborardListItem name) {
+        items.set(position,name);
+    }
 }
