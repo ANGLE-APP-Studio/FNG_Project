@@ -8,10 +8,12 @@
         <entry key="..\:/FANGLE/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2985" />
         <entry key="..\:/FANGLE/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2985" />
         <entry key="..\:/FANGLE/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2985" />
+        <entry key="..\:/FANGLE/app/src/main/res/layout/activity_bulletinboard_dialog.xml" value="0.17806484295845998" />
         <entry key="..\:/FANGLE/app/src/main/res/layout/activity_community.xml" value="0.358695652173913" />
+        <entry key="..\:/FANGLE/app/src/main/res/layout/activity_join.xml" value="0.17806484295845998" />
         <entry key="..\:/FANGLE/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/FANGLE/app/src/main/res/layout/fragment_community_read.xml" value="0.358695652173913" />
-        <entry key="..\:/FANGLE/app/src/main/res/layout/fragment_main_read.xml" value="0.358695652173913" />
+        <entry key="..\:/FANGLE/app/src/main/res/layout/fragment_main_read.xml" value="0.33" />
         <entry key="..\:/FANGLE/app/src/main/res/layout/fragment_profile_read.xml" value="0.358695652173913" />
         <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_main.xml" value="0.1743659420289855" />
         <entry key="..\:/FNG_Project/app/src/main/res/layout/activity_profile_read.xml" value="0.5" />
