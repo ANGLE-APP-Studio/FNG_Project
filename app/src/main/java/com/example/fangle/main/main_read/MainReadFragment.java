@@ -24,6 +24,7 @@ public class MainReadFragment extends Fragment {
         HorizontalScrollView.post(new Runnable() {
             @Override
             public void run() {
+
                 ObjectAnimator.ofInt(HorizontalScrollView, "scrollX", 10000).setDuration(100000).start();
 
             }

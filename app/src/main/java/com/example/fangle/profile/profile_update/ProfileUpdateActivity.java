@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.fangle.R;
+import com.example.fangle.account.user_data.UserData;
 
 public class ProfileUpdateActivity extends Activity {
     EditText user_phone_number,user_nickname,user_birthdate,user_gender;
@@ -42,6 +43,7 @@ public class ProfileUpdateActivity extends Activity {
                     setResult(RESULT_CANCELED);
                 }
 
+                UserData.getInstance().setUserID(result);
                 finish();
             }
         });

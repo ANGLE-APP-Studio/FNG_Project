@@ -81,7 +81,7 @@
         android:id="@+id/artist_name01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="르세라핌"
+        android:text="NMIXX"
         android:layout_marginTop="8dp"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="아티스트 이름 "
+        android:text="Stray_Kids"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.492"
@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="아티스트 이름 "
+        android:text="ITZY"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.492"
@@ -118,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="아티스트 이름 "
+        android:text="Xdinary_Heroes"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="아티스트 이름 "
+        android:text="JYP"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.492"
@@ -141,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="아티스트 이름 "
+        android:text="TWICE"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.492"
@@ -155,7 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="아티스트 이름 "
+        android:text="DAY6"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +166,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="아티스트 이름 "
+        android:text="Bernard_Park"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.492"
@@ -178,7 +178,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="아티스트 이름 "
+        android:text="2PM"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -285,85 +285,102 @@
         android:id="@+id/imageButton01"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/nmixx" />
 
     <ImageButton
         android:id="@+id/imageButton02"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/stray_kids"/>
 
     <ImageButton
         android:id="@+id/imageButton03"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/itzy" />
 
     <ImageButton
         android:id="@+id/imageButton04"
         android:layout_width="48dp"
         android:layout_height="48dp"
-
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/xdinary_heroes"/>
 
     <ImageButton
         android:id="@+id/imageButton05"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
-        tools:srcCompat="@tools:sample/avatars" />
+       android:src="@drawable/jyp"/>
 
     <ImageButton
         android:id="@+id/imageButton06"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/twice"/>
 
     <ImageButton
         android:id="@+id/imageButton07"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/day6" />
 
     <ImageButton
         android:id="@+id/imageButton08"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/bernard_park"/>
 
     <ImageButton
         android:id="@+id/imageButton09"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0sp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/topm"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

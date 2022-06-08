@@ -8,11 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,11 +29,11 @@ import com.example.fangle.writing.writing_read.WritingReadActivity;
 public class BulletinboardReadActivity extends AppCompatActivity {
 
     public ListView board_list;
-    TextView board_text;
-
+    TextView board_text,board_name;
+    ImageView board_image;
     BulletinboardListItemAdapter adapter;
     String community_name = " 아직 미정 ";
-
+    String announcement;
     private ActivityResultLauncher<Intent> resultLauncher,updateLauncher;
 
     //참고로 프로그램 정의서는 관리자 기능으로 분류 되어있어서 관리자 만 생성 버튼을 보이게 해야 해서 일단 인트로 에서 관리자 분류를 해야한다.
@@ -39,6 +42,9 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulletinboard_read);
 
+        board_image = (ImageView) findViewById(R.id.board_image);
+        board_name = (TextView) findViewById(R.id.board_name);
+        announcement = board_name.getText().toString();
         // listview 참조
         board_list = (ListView) findViewById(R.id.bulletinboard_list);
         registerForContextMenu(board_list);
@@ -49,19 +55,25 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         // 커뮤니티 이름가져오기
         board_text = (TextView)findViewById(R.id.board_text);
 
+        // getIntent
         Intent board_name = getIntent();
         board_text.setText((board_name.getStringExtra("artist_name")) + " 게시판");
+        byte[] arr = getIntent().getByteArrayExtra("image"); // 이미지
+        Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
+        board_image.setImageBitmap(image);
+        //
 
+        adapter.addItem(new BulletinborardListItem("공지사항"));
         board_list.setAdapter(adapter);
 
         board_list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
                 //  리스트 아이템 에서
-                String board_name = ((BulletinborardListItem)adapter.getItem(position)).getBoard_name();
+                String board = ((BulletinborardListItem)adapter.getItem(position)).getBoard_name();
                 // 클릭시 게시글로 넘어감
                 Intent post_intent = new Intent(BulletinboardReadActivity.this, WritingReadActivity.class);
-                post_intent.putExtra("board_name",board_name);
+                post_intent.putExtra("board_name",board);
                 startActivity(post_intent);
 
             }
@@ -137,5 +149,12 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         Intent board_create_intent = new Intent(this, BulletinboardCreateActivity.class);
         board_create_intent.putExtra("community_name",community_name);
         resultLauncher.launch(board_create_intent);
+    }
+
+    public void announcement(View view){
+
+        Intent post_intent = new Intent(BulletinboardReadActivity.this, WritingReadActivity.class);
+        post_intent.putExtra("board_name",announcement);
+        startActivity(post_intent);
     }
 }
