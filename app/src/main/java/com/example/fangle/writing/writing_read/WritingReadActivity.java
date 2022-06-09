@@ -155,6 +155,7 @@ public class WritingReadActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
+    // 너무 많이 쓴다 전역 변수로 만들어라
     private String getTime(){
         mNow = System.currentTimeMillis();
         mDate = new Date(mNow);

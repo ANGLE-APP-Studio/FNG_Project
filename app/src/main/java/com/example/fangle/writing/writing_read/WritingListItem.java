@@ -5,8 +5,6 @@ public class WritingListItem {
     private String nickname;
     private String date_created;
 
-
-
     public String getWriting() {
         return writing;
     }

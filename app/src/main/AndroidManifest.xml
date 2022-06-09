@@ -13,6 +13,12 @@
         android:theme="@style/Theme.FANGLE"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".announcement.announcement_post.AnnounCementPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".announcement.announcement_read.AnnounCementReadActivity"
+            android:exported="true" />
+        <activity
             android:name=".nft.nft_read.NftReadActivity"
             android:exported="false" />
         <activity
@@ -35,7 +41,7 @@
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
             android:name=".bulletinboard.bulletinboard_read.BulletinboardReadActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".writing.writing_read.WritingDialogActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
@@ -44,14 +50,14 @@
             android:exported="false" />
         <activity
             android:name=".writing.writing_post.WritingPostActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".writing.writing_create.WritingCreateActivity"
             android:exported="false" />
         <activity
             android:name=".writing.writing_read.WritingReadActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".profile.profile_delete.ProfileDeleteActivity"
             android:exported="false" />
@@ -63,14 +69,13 @@
             android:exported="false" />
         <activity
             android:name=".profile.profile_read.ProfileReadActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".intro.IntroActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

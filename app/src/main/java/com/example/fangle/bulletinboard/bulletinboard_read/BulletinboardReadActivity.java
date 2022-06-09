@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.fangle.R;
+import com.example.fangle.announcement.announcement_read.AnnounCementReadActivity;
 import com.example.fangle.bulletinboard.bulletinboard_create.BulletinboardCreateActivity;
 import com.example.fangle.bulletinboard.bulletinboard_update.BulletinboardUpdateActivity;
 import com.example.fangle.writing.writing_post.WritingPostActivity;
@@ -152,8 +153,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
     }
 
     public void announcement(View view){
-
-        Intent post_intent = new Intent(BulletinboardReadActivity.this, WritingReadActivity.class);
+        Intent post_intent = new Intent(BulletinboardReadActivity.this, AnnounCementReadActivity.class);
         post_intent.putExtra("board_name",announcement);
         startActivity(post_intent);
     }
