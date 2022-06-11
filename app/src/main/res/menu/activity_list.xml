@@ -26,11 +26,6 @@
         android:title="알람"
         />
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/profile"
-        android:title="프로필"
-        />
-    <item
         android:id="@+id/logout"
         android:icon="@drawable/logout"
         android:title="로그아웃"

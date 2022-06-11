@@ -140,10 +140,6 @@ public class MainReadActivity extends AppCompatActivity {
             Toast.makeText(this,"메뉴", Toast.LENGTH_LONG).show();
             drawerLayout.openDrawer(GravityCompat.START);
         }
-        if (id == R.id.setting_item){
-            Toast.makeText(this,"셋팅", Toast.LENGTH_LONG).show();
-        }
-
         return super.onOptionsItemSelected(item);
     }
 

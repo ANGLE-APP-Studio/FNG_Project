@@ -1,5 +1,7 @@
 package com.example.fangle.announcement.announcement_read;
 
+import android.graphics.Bitmap;
+
 public class AnnounCementListItem {
     private String announcement_title;
     private String Date_Created;

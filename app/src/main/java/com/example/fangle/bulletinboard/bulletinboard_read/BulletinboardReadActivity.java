@@ -27,6 +27,8 @@ import com.example.fangle.writing.writing_post.WritingPostActivity;
 import com.example.fangle.writing.writing_read.WritingListItem;
 import com.example.fangle.writing.writing_read.WritingReadActivity;
 
+import java.io.ByteArrayOutputStream;
+
 public class BulletinboardReadActivity extends AppCompatActivity {
 
     public ListView board_list;
@@ -35,6 +37,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
     BulletinboardListItemAdapter adapter;
     String community_name = " 아직 미정 ";
     String announcement;
+    String image_text ="";
     private ActivityResultLauncher<Intent> resultLauncher,updateLauncher;
 
     //참고로 프로그램 정의서는 관리자 기능으로 분류 되어있어서 관리자 만 생성 버튼을 보이게 해야 해서 일단 인트로 에서 관리자 분류를 해야한다.
@@ -59,12 +62,13 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         // getIntent
         Intent board_name = getIntent();
         board_text.setText((board_name.getStringExtra("artist_name")) + " 게시판");
+        image_text = (board_name.getStringExtra("artist_name"));
+
         byte[] arr = getIntent().getByteArrayExtra("image"); // 이미지
         Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
         board_image.setImageBitmap(image);
         //
 
-        adapter.addItem(new BulletinborardListItem("공지사항"));
         board_list.setAdapter(adapter);
 
         board_list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -153,8 +157,11 @@ public class BulletinboardReadActivity extends AppCompatActivity {
     }
 
     public void announcement(View view){
+
         Intent post_intent = new Intent(BulletinboardReadActivity.this, AnnounCementReadActivity.class);
         post_intent.putExtra("board_name",announcement);
+        post_intent.putExtra("image_text",image_text);
         startActivity(post_intent);
+
     }
 }

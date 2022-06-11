@@ -30,6 +30,8 @@ public class AnnounCementReadActivity extends AppCompatActivity {
     public ListView announcement_list;
     TextView announcement_name_text;
     AnnounCementListItemAdapter adapter;
+    String image_text;
+    int image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +41,26 @@ public class AnnounCementReadActivity extends AppCompatActivity {
         adapter = new AnnounCementListItemAdapter();
         announcement_list = (ListView) findViewById(R.id.announcement_list);
 
-        adapter.addItem(new AnnounCementListItem("첫 공지!!",getTime(),R.drawable.itzy_announcrment));
-        announcement_list.setAdapter(adapter);
-
         Intent announcement_intent = getIntent();
-        announcement_name_text.setText(announcement_intent.getStringExtra("announcement"));
+        announcement_name_text.setText(announcement_intent.getStringExtra("board_name"));
+        image_text = announcement_intent.getStringExtra("image_text");
 
+        switch (image_text){
+            case "NMIXX":
+                adapter.addItem(new AnnounCementListItem("첫 공지!!",getTime(),R.drawable.nmixx_announcrment));
+                adapter.notifyDataSetChanged();
+                break;
+            case  "Stray_Kids":
+                adapter.addItem(new AnnounCementListItem("첫 공지!!",getTime(),R.drawable.skz_announcrment));
+                adapter.notifyDataSetChanged();
+                break;
+            case "ITZY":
+                adapter.addItem(new AnnounCementListItem("첫 공지!!",getTime(),R.drawable.itzy_announcrment));
+                adapter.notifyDataSetChanged();
+                break;
+        }
+
+        announcement_list.setAdapter(adapter);
 
         announcement_list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override

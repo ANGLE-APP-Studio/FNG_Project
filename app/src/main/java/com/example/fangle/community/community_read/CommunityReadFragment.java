@@ -80,7 +80,7 @@ public class CommunityReadFragment extends Fragment {
         join02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                artist_name = artist_name01.getText().toString();
+                artist_name = artist_name02.getText().toString();
                 Intent join_intent = new Intent(getActivity(), JoinActivity.class);
                 join_intent.putExtra("artist_name",artist_name);
                 startActivity(join_intent);
@@ -91,7 +91,7 @@ public class CommunityReadFragment extends Fragment {
         imageButton02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                artist_name = artist_name01.getText().toString();
+                artist_name = artist_name02.getText().toString();
                 Intent borard_intent = new Intent(getActivity(), BulletinboardReadActivity.class);
                 borard_intent.putExtra("artist_name",artist_name);
 
@@ -109,7 +109,7 @@ public class CommunityReadFragment extends Fragment {
         join03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                artist_name = artist_name01.getText().toString();
+                artist_name = artist_name03.getText().toString();
                 Intent join_intent = new Intent(getActivity(), JoinActivity.class);
                 join_intent.putExtra("artist_name",artist_name);
                 startActivity(join_intent);
@@ -120,7 +120,7 @@ public class CommunityReadFragment extends Fragment {
         imageButton03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                artist_name = artist_name01.getText().toString();
+                artist_name = artist_name03.getText().toString();
                 Intent borard_intent = new Intent(getActivity(), BulletinboardReadActivity.class);
                 borard_intent.putExtra("artist_name",artist_name);
 
@@ -130,7 +130,6 @@ public class CommunityReadFragment extends Fragment {
                 sendBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
                 borard_intent.putExtra("image",byteArray);
-
                 startActivity(borard_intent);
             }
         });
