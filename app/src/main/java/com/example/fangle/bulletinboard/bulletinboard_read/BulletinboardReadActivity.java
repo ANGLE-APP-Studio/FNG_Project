@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,11 +30,14 @@ import com.example.fangle.writing.writing_read.WritingListItem;
 import com.example.fangle.writing.writing_read.WritingReadActivity;
 
 import java.io.ByteArrayOutputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BulletinboardReadActivity extends AppCompatActivity {
 
     public ListView board_list;
     TextView board_text,board_name;
+    TextView jyp_text,twitter_text,facebook_text,youtube_text;
     ImageView board_image;
     BulletinboardListItemAdapter adapter;
     String community_name = " 아직 미정 ";
@@ -46,6 +51,12 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulletinboard_read);
 
+        // 링크 텍스트
+        jyp_text = (TextView) findViewById(R.id.jyp_text);
+        twitter_text = (TextView) findViewById(R.id.twitter_text);
+        facebook_text = (TextView) findViewById(R.id.facebook_text);
+        youtube_text = (TextView) findViewById(R.id.youtube_text);
+        
         board_image = (ImageView) findViewById(R.id.board_image);
         board_name = (TextView) findViewById(R.id.board_name);
         announcement = board_name.getText().toString();
@@ -163,5 +174,24 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         post_intent.putExtra("image_text",image_text);
         startActivity(post_intent);
 
+    }
+
+    public void web(View v){
+        if(v.getId() == R.id.jyp_text){
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.jype.com/"));
+            startActivity(intent);
+        }
+        if(v.getId() == R.id.twitter_text){
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/jypnation"));
+            startActivity(intent);
+        }
+        if(v.getId() == R.id.facebook_text){
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/jypnation"));
+            startActivity(intent);
+        }
+        if(v.getId() == R.id.youtube_text){
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/c/JYPEntertainment"));
+            startActivity(intent);
+        }
     }
 }

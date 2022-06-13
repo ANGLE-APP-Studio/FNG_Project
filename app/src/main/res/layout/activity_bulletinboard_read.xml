@@ -51,27 +51,15 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="228dp" />
 
+
     <ImageView
         android:id="@+id/board_image"
         android:layout_width="114dp"
         android:layout_height="121dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/board_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="132dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
-        app:layout_constraintStart_toEndOf="@+id/board_image" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -98,6 +86,57 @@
         </LinearLayout>
     </FrameLayout>
 
+    <TextView
+        android:id="@+id/jyp_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="JYPE"
+        android:linksClickable="true"
+        android:autoLink="web"
+        android:onClick="web"
+        app:layout_constraintStart_toEndOf="@+id/board_image"
+        app:layout_constraintTop_toBottomOf="@+id/board_text" />
+
+    <TextView
+        android:id="@+id/twitter_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Twitter"
+        android:linksClickable="true"
+        android:autoLink="web"
+        android:onClick="web"
+        app:layout_constraintStart_toEndOf="@+id/board_image"
+        app:layout_constraintTop_toBottomOf="@+id/jyp_text" />
+
+    <TextView
+        android:id="@+id/facebook_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Facebook"
+        android:linksClickable="true"
+        android:autoLink="web"
+        android:onClick="web"
+        app:layout_constraintStart_toEndOf="@+id/board_image"
+        app:layout_constraintTop_toBottomOf="@+id/twitter_text" />
+
+    <TextView
+        android:id="@+id/youtube_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Youtube"
+        android:linksClickable="true"
+        android:autoLink="web"
+        android:onClick="web"
+        app:layout_constraintStart_toEndOf="@+id/board_image"
+        app:layout_constraintTop_toBottomOf="@+id/facebook_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
