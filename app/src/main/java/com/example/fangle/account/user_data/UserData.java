@@ -7,6 +7,8 @@ public class UserData  {
     public String userPW;
     public int sign=0; // 0 이면 이메일 로그인  1이면 구글 로그인
 
+    public UserData(){}
+
     public String getUserID() {
         return userID;
     }
@@ -36,6 +38,13 @@ public class UserData  {
         userPW = "";
         return "";
     }
+
+    public UserData(String userID,String userPW , int sign){
+        this.userID = userID;
+        this.userPW = userPW;
+        this.sign = 0;
+    }
+
     private static UserData instance = null;
 
     public static synchronized UserData getInstance(){
@@ -44,4 +53,5 @@ public class UserData  {
         }
         return instance;
     }
+
 }

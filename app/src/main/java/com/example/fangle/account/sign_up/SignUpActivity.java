@@ -26,6 +26,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.example.fangle.account.user_data.UserData;
 
 import java.io.IOException;//
 import java.io.BufferedReader;//
@@ -58,6 +61,15 @@ public class SignUpActivity extends AppCompatActivity {
     // 파이어베이스 회원가입 관련 선언
     private static final String TAG = "SignUpActivity";
     private FirebaseAuth mAuth;
+
+    // 파이어베이스 DB연결 관련 선언
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    //DatabaseReference는 데이터베이스의 특정 위치로 연결하는 거라고 생각하면 된다.
+    //현재 연결은 데이터베이스에만 딱 연결해놓고
+    //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
+    private DatabaseReference databaseReference = database.getReference();
+
 
     // 레이아웃 관련 선언
     EditText sign_up_id,sign_up_password,sign_up_email,sign_up_phone_number,sign_up_nickname,sign_up_birthdate,sign_up_gender;
@@ -115,48 +127,48 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    class CustomTask extends AsyncTask<String, Void, String> {
-        String sendMsg, receiveMsg;
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-                String str;
-                URL url = new URL("http://222.109.188.220:8080//sign_up/user_data_up.jsp");
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-                conn.setRequestMethod("POST");
-                OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-                sendMsg = "UID="+strings[0]
-                        +"&PSW="+strings[1]
-                        + "&EML="+strings[2]
-                        +"&PNB="+strings[3]
-                        + "&NCK=" + strings[4]
-                        + "&BTD=" +strings[5]
-                        +"&GND=" +strings[6]
-                        + "&RNK=" + strings[7];
-                osw.write(sendMsg);
-                osw.flush();
-                if(conn.getResponseCode() == conn.HTTP_OK) {
-                    InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "EUC-KR");
-                    BufferedReader reader = new BufferedReader(tmp);
-                    StringBuffer buffer = new StringBuffer();
-                    while ((str = reader.readLine()) != null) {
-                        buffer.append(str);
-                    }
-                    receiveMsg = buffer.toString();
-
-                } else {
-                    Log.i("통신 결과", conn.getResponseCode()+"에러");
-                }
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return receiveMsg;
-        }
-    }
+//    class CustomTask extends AsyncTask<String, Void, String> {
+//        String sendMsg, receiveMsg;
+//        @Override
+//        protected String doInBackground(String... strings) {
+//            try {
+//                String str;
+//                URL url = new URL("http://222.109.188.220:8080//sign_up/user_data_up.jsp");
+//                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+//                conn.setRequestMethod("POST");
+//                OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
+//                sendMsg = "UID="+strings[0]
+//                        +"&PSW="+strings[1]
+//                        + "&EML="+strings[2]
+//                        +"&PNB="+strings[3]
+//                        + "&NCK=" + strings[4]
+//                        + "&BTD=" +strings[5]
+//                        +"&GND=" +strings[6]
+//                        + "&RNK=" + strings[7];
+//                osw.write(sendMsg);
+//                osw.flush();
+//                if(conn.getResponseCode() == conn.HTTP_OK) {
+//                    InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "EUC-KR");
+//                    BufferedReader reader = new BufferedReader(tmp);
+//                    StringBuffer buffer = new StringBuffer();
+//                    while ((str = reader.readLine()) != null) {
+//                        buffer.append(str);
+//                    }
+//                    receiveMsg = buffer.toString();
+//
+//                } else {
+//                    Log.i("통신 결과", conn.getResponseCode()+"에러");
+//                }
+//
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            return receiveMsg;
+//        }
+//    }
 
     // 회원가입 버튼을 눌르면 나오는 다이얼로그
     // 입력한 정보를 다시 확인 하게 한다.
@@ -175,6 +187,7 @@ public class SignUpActivity extends AppCompatActivity {
         builder.setPositiveButton("네! 맞아요!", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialog, int which) {
                 sign_Up();
+                adduserdata(id,password);
             }
         });
 
@@ -242,6 +255,16 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    // 유저 데이터 넘기는 함수
+    private void adduserdata(String id, String password){
+        //animal.java에서 선언했던 함수.
+        UserData userData = new UserData(id,password,0);
+
+        //child는 해당 키 위치로 이동하는 함수입니다.
+        //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
+        databaseReference.child("user").push().setValue(userData);
     }
 
     //생년월일 설정

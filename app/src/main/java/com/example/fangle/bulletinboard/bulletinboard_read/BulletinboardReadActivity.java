@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,11 +26,18 @@ import com.example.fangle.R;
 import com.example.fangle.announcement.announcement_read.AnnounCementReadActivity;
 import com.example.fangle.bulletinboard.bulletinboard_create.BulletinboardCreateActivity;
 import com.example.fangle.bulletinboard.bulletinboard_update.BulletinboardUpdateActivity;
+import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
 import com.example.fangle.writing.writing_post.WritingPostActivity;
 import com.example.fangle.writing.writing_read.WritingListItem;
 import com.example.fangle.writing.writing_read.WritingReadActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,6 +52,14 @@ public class BulletinboardReadActivity extends AppCompatActivity {
     String announcement;
     String image_text ="";
     private ActivityResultLauncher<Intent> resultLauncher,updateLauncher;
+
+    // 파이어베이스 DB연결 관련 선언
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    //DatabaseReference는 데이터베이스의 특정 위치로 연결하는 거라고 생각하면 된다.
+    //현재 연결은 데이터베이스에만 딱 연결해놓고
+    //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
+    private DatabaseReference databaseReference = database.getReference();
 
     //참고로 프로그램 정의서는 관리자 기능으로 분류 되어있어서 관리자 만 생성 버튼을 보이게 해야 해서 일단 인트로 에서 관리자 분류를 해야한다.
     @Override
@@ -106,17 +122,17 @@ public class BulletinboardReadActivity extends AppCompatActivity {
 //            }
 //        });
 
-        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if(result.getResultCode() == RESULT_OK){
-                    Intent data_intent = result.getData();
-                    String data_result = data_intent.getExtras().getString("ResultData");
-                    adapter.addItem(new BulletinborardListItem(data_result));
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        });
+//        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+//            @Override
+//            public void onActivityResult(ActivityResult result) {
+//                if(result.getResultCode() == RESULT_OK){
+//                    Intent data_intent = result.getData();
+//                    String data_result = data_intent.getExtras().getString("ResultData");
+//                    adapter.addItem(new BulletinborardListItem(data_result));
+//                    adapter.notifyDataSetChanged();
+//                }
+//            }
+//        });
 
 
         updateLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -132,8 +148,25 @@ public class BulletinboardReadActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
+        databaseReference.child("Bulletinboard").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    BulletinborardListItem group = snapshot.getValue(BulletinborardListItem.class);
+                    String value = Objects.requireNonNull(group).getBoard_name();
+                    adapter.addItem(new BulletinborardListItem(value));
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+    }
 
     // 게시판 롱 클릭 시 나오는 메뉴
     @Override
@@ -164,7 +197,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
     public void board_create(View view) {
         Intent board_create_intent = new Intent(this, BulletinboardCreateActivity.class);
         board_create_intent.putExtra("community_name",community_name);
-        resultLauncher.launch(board_create_intent);
+        startActivity(board_create_intent);
     }
 
     public void announcement(View view){

@@ -2,7 +2,9 @@ package com.example.fangle.bulletinboard.bulletinboard_read;
 
 public class BulletinborardListItem {
 
-    private String board_name;
+    private String board_name = "";
+
+    public BulletinborardListItem(){}
 
     public String getBoard_name() {
         return board_name;
