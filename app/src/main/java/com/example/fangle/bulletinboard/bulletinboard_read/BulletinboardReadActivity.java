@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fangle.R;
 import com.example.fangle.announcement.announcement_read.AnnounCementReadActivity;
@@ -30,6 +31,8 @@ import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListIte
 import com.example.fangle.writing.writing_post.WritingPostActivity;
 import com.example.fangle.writing.writing_read.WritingListItem;
 import com.example.fangle.writing.writing_read.WritingReadActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -177,6 +180,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
+
         AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
         int index= info.position;
         String Board_name = ((BulletinborardListItem)adapter.getItem(index)).getBoard_name();
@@ -186,15 +190,33 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             Intent update = new Intent(this, BulletinboardUpdateActivity.class);
             update.putExtra("Board_name",Board_name);
             update.putExtra("index",index);
-            updateLauncher.launch(update);
+            startActivity(update);
+            adapter.notifyDataSetChanged();
         }else if(itemId == R.id.delete){
-            adapter.remove(index);
+            onDeleteContent(Board_name);
             adapter.notifyDataSetChanged();
         }
         return super.onContextItemSelected(item);
     }
 
+    private void onDeleteContent(String Board_name) {
+        databaseReference.child("Bulletinboard").child(Board_name).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(BulletinboardReadActivity.this, "삭제 성공", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                System.out.println("error: "+e.getMessage());
+                Toast.makeText(BulletinboardReadActivity.this, "삭제 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+        list_clear();
+    }
+
     public void board_create(View view) {
+        list_clear();
         Intent board_create_intent = new Intent(this, BulletinboardCreateActivity.class);
         board_create_intent.putExtra("community_name",community_name);
         startActivity(board_create_intent);
@@ -227,4 +249,12 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void list_clear(){
+        int count = adapter.getCount();
+        for(int i = 0;i<count;i++){
+            adapter.clear();
+        }
+    }
+
 }

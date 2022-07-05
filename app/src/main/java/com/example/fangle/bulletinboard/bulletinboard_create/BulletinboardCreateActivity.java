@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.example.fangle.R;
 import com.example.fangle.account.user_data.UserData;
+import com.example.fangle.bulletinboard.bulletinboard_read.BulletinboardListItemAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
@@ -25,6 +26,7 @@ public class BulletinboardCreateActivity extends Activity {
     //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
     private DatabaseReference databaseReference = database.getReference();
 
+    BulletinboardListItemAdapter adapter;
     String community_name,result;
     Button cancel_create,create_button;
     EditText board_name_text_create;
@@ -36,6 +38,9 @@ public class BulletinboardCreateActivity extends Activity {
         board_name_text_create = (EditText) findViewById(R.id.board_name_text_create);
         cancel_create = (Button) findViewById(R.id.cancel_create);
         create_button = (Button) findViewById(R.id.create_button);
+
+        //adapter 참조
+        adapter = new BulletinboardListItemAdapter();
 
         cancel_create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +61,6 @@ public class BulletinboardCreateActivity extends Activity {
 //                    setResult(RESULT_CANCELED);
 //                }
                 addBulletinboard(result);
-
                 finish();
             }
         });
@@ -72,6 +76,9 @@ public class BulletinboardCreateActivity extends Activity {
 
         //child는 해당 키 위치로 이동하는 함수입니다.
         //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
-        databaseReference.child("Bulletinboard").push().setValue(BulletinboardData);
+        databaseReference.child("Bulletinboard").child(result).setValue(BulletinboardData);
     }
+
+
+
 }
