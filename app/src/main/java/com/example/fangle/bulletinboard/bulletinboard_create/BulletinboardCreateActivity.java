@@ -79,6 +79,4 @@ public class BulletinboardCreateActivity extends Activity {
         databaseReference.child("Bulletinboard").child(result).setValue(BulletinboardData);
     }
 
-
-
 }

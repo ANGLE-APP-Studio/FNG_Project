@@ -24,11 +24,24 @@ import com.example.fangle.bulletinboard.bulletinboard_update.BulletinboardUpdate
 import com.example.fangle.writing.writing_create.WritingCreateActivity;
 import com.example.fangle.writing.writing_post.WritingPostActivity;
 import com.example.fangle.writing.writing_update.WritingUpdateActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class WritingReadActivity extends AppCompatActivity {
+    // 파이어베이스 DB연결 관련 선언
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    //DatabaseReference는 데이터베이스의 특정 위치로 연결하는 거라고 생각하면 된다.
+    //현재 연결은 데이터베이스에만 딱 연결해놓고
+    //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
+    private DatabaseReference databaseReference = database.getReference();
 
     long mNow;
     Date mDate;
@@ -119,6 +132,25 @@ public class WritingReadActivity extends AppCompatActivity {
             }
         });
 
+        databaseReference.child("Bulletinboard").child("Name").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    WritingListItem group = snapshot.getValue(WritingListItem.class);
+                    String writing = group.getWriting();
+                    String nickname = group.getNickname();
+                    String date_created = group.getDate_Created();
+                    adapter.addItem(new WritingListItem(writing,nickname,date_created));
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
     }
 
     @Override
@@ -165,7 +197,7 @@ public class WritingReadActivity extends AppCompatActivity {
     // 글쓰는 엑티비티로 넘어가기
     public void writing_create_button(View view){
         Intent writing_create_intent = new Intent(WritingReadActivity.this, WritingCreateActivity.class);
-        writing_create_intent.putExtra("SendData","이규현");
+        writing_create_intent.putExtra("SendData",userid);
         resultLauncher.launch(writing_create_intent);
     }
 

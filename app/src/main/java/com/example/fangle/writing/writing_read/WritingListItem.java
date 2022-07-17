@@ -29,7 +29,7 @@ public class WritingListItem {
         this.date_created = date_created;
     }
 
-    WritingListItem(String writing,String nickname,String date_created){
+    public WritingListItem(String writing,String nickname,String date_created){
         this.nickname = nickname;
         this.writing = writing;
         this.date_created = date_created;
