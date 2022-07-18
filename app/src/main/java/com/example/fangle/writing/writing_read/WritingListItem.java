@@ -1,9 +1,11 @@
 package com.example.fangle.writing.writing_read;
 
 public class WritingListItem {
-    private String writing;
-    private String nickname;
-    private String date_created;
+
+    private String writing_title = "";
+    private String writing = "";
+    private String nickname = "";
+    private String date_created = "";
 
     public String getWriting() {
         return writing;
@@ -29,10 +31,19 @@ public class WritingListItem {
         this.date_created = date_created;
     }
 
-    public WritingListItem(String writing,String nickname,String date_created){
+    public String getWriting_title() {
+        return writing_title;
+    }
+
+    public void setWriting_title(String writing_title) {
+        this.writing_title = writing_title;
+    }
+
+    public WritingListItem(String writing,String nickname,String date_created,String writing_title){
         this.nickname = nickname;
         this.writing = writing;
         this.date_created = date_created;
+        this.writing_title = writing_title;
     }
 
 }

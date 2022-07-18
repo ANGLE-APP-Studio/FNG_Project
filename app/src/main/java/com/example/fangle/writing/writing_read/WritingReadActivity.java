@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.fangle.R;
 import com.example.fangle.account.user_data.UserData;
+import com.example.fangle.bulletinboard.bulletinboard_read.BulletinboardListItemAdapter;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
 import com.example.fangle.bulletinboard.bulletinboard_update.BulletinboardUpdateActivity;
 import com.example.fangle.writing.writing_create.WritingCreateActivity;
@@ -42,6 +43,7 @@ public class WritingReadActivity extends AppCompatActivity {
     //현재 연결은 데이터베이스에만 딱 연결해놓고
     //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
     private DatabaseReference databaseReference = database.getReference();
+    private DatabaseReference child = databaseReference.child("Bulletinboard").child("Name").child("Wring");
 
     long mNow;
     Date mDate;
@@ -51,6 +53,7 @@ public class WritingReadActivity extends AppCompatActivity {
 
     public ListView writing_list;
     WritingListItemAdapter adapter;
+    BulletinboardListItemAdapter Bulletinboard_adapter;
     UserData userData;
     TextView board_name_text;
 
@@ -73,7 +76,6 @@ public class WritingReadActivity extends AppCompatActivity {
         Intent bulletinboardRead_intent = getIntent();
         board_name_text.setText(bulletinboardRead_intent.getStringExtra("board_name"));
 
-        adapter.addItem(new WritingListItem("동요","나개똥",getTime()));
         writing_list.setAdapter(adapter);
 
         writing_list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -81,12 +83,14 @@ public class WritingReadActivity extends AppCompatActivity {
             public void onItemClick(AdapterView parent, View v, int position, long id){
 
                 //  리스트 아이템 에서
+                String Writing_title = ((WritingListItem)adapter.getItem(position)).getWriting_title();
                 String Writing = ((WritingListItem)adapter.getItem(position)).getWriting();
                 String nickname = ((WritingListItem)adapter.getItem(position)).getNickname();
                 String date_created = ((WritingListItem)adapter.getItem(position)).getDate_Created();
 
                 // 클릭시 클 크게 보기
                 Intent post_intent = new Intent(WritingReadActivity.this, WritingPostActivity.class);
+                post_intent.putExtra("writing_title",Writing_title);
                 post_intent.putExtra("nickname",nickname);
                 post_intent.putExtra("writing",Writing);
                 post_intent.putExtra("date_created",date_created);
@@ -106,41 +110,16 @@ public class WritingReadActivity extends AppCompatActivity {
 //            }
 //        });
 
-        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if(result.getResultCode() == RESULT_OK){
-                    Intent data_intent = result.getData();
-                    String data_result = data_intent.getExtras().getString("ResultData");
-                    adapter.addItem(new WritingListItem(data_result,userid,getTime()));
-                    writing_list.setAdapter(adapter);
-                }
-            }
-        });
-
-        updateLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if(result.getResultCode() == RESULT_OK){
-                    Intent data_intent = result.getData();
-                    String data_result = data_intent.getExtras().getString("ResultData");
-                    int index = data_intent.getExtras().getInt("index");
-                    WritingListItem name = new WritingListItem(data_result,userid,getTime());
-                    adapter.set(index,name);
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        });
-
-        databaseReference.child("Bulletinboard").child("Name").addListenerForSingleValueEvent(new ValueEventListener() {
+        child.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    //WritingListItem group = snapshot.getValue(WritingListItem.class);
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    WritingListItem group = snapshot.getValue(WritingListItem.class);
-                    String writing = group.getWriting();
-                    String nickname = group.getNickname();
-                    String date_created = group.getDate_Created();
-                    adapter.addItem(new WritingListItem(writing,nickname,date_created));
+                    String writing = snapshot.child("writing").getValue(String.class);
+                    String nickname = snapshot.child("nickname").getValue(String.class);
+                    String date_created = snapshot.child("date_Created").getValue(String.class);
+                    String writing_title = snapshot.child("writing_title").getValue(String.class);
+                    adapter.addItem(new WritingListItem(writing,nickname,date_created,writing_title));
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -159,6 +138,7 @@ public class WritingReadActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.option_menu, menu);
     }
 
+    //여기가 수정 삭제 부분
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
@@ -196,9 +176,17 @@ public class WritingReadActivity extends AppCompatActivity {
 
     // 글쓰는 엑티비티로 넘어가기
     public void writing_create_button(View view){
+        list_clear();
         Intent writing_create_intent = new Intent(WritingReadActivity.this, WritingCreateActivity.class);
         writing_create_intent.putExtra("SendData",userid);
-        resultLauncher.launch(writing_create_intent);
+        startActivity(writing_create_intent);
+    }
+
+    public void list_clear(){
+        int count = adapter.getCount();
+        for(int i = 0;i<count;i++){
+            adapter.clear();
+        }
     }
 
 }

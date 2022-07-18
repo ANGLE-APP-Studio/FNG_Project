@@ -18,7 +18,7 @@ import com.example.fangle.writing.writing_read.WritingListItem;
 
 public class WritingPostActivity extends AppCompatActivity {
 
-    TextView nickname,write_date,writing2;
+    TextView nickname,write_date,writing2,write_title;
     EditText comment_create;
     Button comment_button;
     ListView bulletinboard_list;
@@ -32,6 +32,7 @@ public class WritingPostActivity extends AppCompatActivity {
         bulletinboard_list = (ListView) findViewById(R.id.bulletinboard_list);
         adapter = new CommentListItemAdapter();
 
+        write_title = (TextView) findViewById(R.id.writing_title_post);
         nickname = (TextView) findViewById(R.id.nickname);
         write_date = (TextView) findViewById(R.id.write_date);
         writing2 = (TextView) findViewById(R.id.writing2);
@@ -42,6 +43,7 @@ public class WritingPostActivity extends AppCompatActivity {
         comment_button = (Button) findViewById(R.id.comment_button);
 
         Intent writing_intent = getIntent();
+        write_title.setText(writing_intent.getStringExtra("writing_title"));
         nickname.setText(writing_intent.getStringExtra("nickname"));
         writing2.setText(writing_intent.getStringExtra("writing"));
         write_date.setText(writing_intent.getStringExtra("date_created"));

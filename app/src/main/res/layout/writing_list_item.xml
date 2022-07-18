@@ -10,20 +10,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/account_image"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintBottom_toTopOf="@+id/writing"
+        app:layout_constraintStart_toEndOf="@+id/account_image" />
 
     <TextView
         android:id="@+id/Date_Created"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="8dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/account_image"
-        app:layout_constraintTop_toBottomOf="@+id/nickname" />
+        app:layout_constraintBottom_toTopOf="@+id/writing"
+        app:layout_constraintStart_toEndOf="@+id/nickname" />
 
     <ImageView
         android:id="@+id/account_image"
@@ -90,6 +90,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="150dp" />
+
+    <TextView
+        android:id="@+id/writing_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/account_image"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

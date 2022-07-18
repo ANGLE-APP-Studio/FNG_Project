@@ -110,7 +110,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
                 Intent post_intent = new Intent(BulletinboardReadActivity.this, WritingReadActivity.class);
                 post_intent.putExtra("board_name",board);
                 startActivity(post_intent);
-
+                list_clear();
             }
         });
 
@@ -223,12 +223,10 @@ public class BulletinboardReadActivity extends AppCompatActivity {
     }
 
     public void announcement(View view){
-
         Intent post_intent = new Intent(BulletinboardReadActivity.this, AnnounCementReadActivity.class);
         post_intent.putExtra("board_name",announcement);
         post_intent.putExtra("image_text",image_text);
         startActivity(post_intent);
-
     }
 
     public void web(View v){

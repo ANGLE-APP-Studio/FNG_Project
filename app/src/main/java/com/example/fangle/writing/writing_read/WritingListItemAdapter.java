@@ -44,10 +44,12 @@ public class WritingListItemAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.writing_list_item, parent, false);
         }
 
+        TextView writing_title = convertView.findViewById(R.id.writing_title);
         TextView writing = convertView.findViewById(R.id.writing);
         TextView nickname = convertView.findViewById(R.id.nickname);
         TextView date_created = convertView.findViewById(R.id.Date_Created);
 
+        writing_title.setText(listItem.getWriting_title());
         nickname.setText(listItem.getNickname());
         writing.setText(listItem.getWriting());
         date_created.setText(listItem.getDate_Created());
@@ -66,4 +68,9 @@ public class WritingListItemAdapter extends BaseAdapter {
     public void set(int position, WritingListItem name) {
         items.set(position,name);
     }
+
+    public void clear(){
+        items.clear();
+    }
+
 }

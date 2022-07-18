@@ -18,16 +18,15 @@
 
     <EditText
         android:id="@+id/writing_text"
-        android:layout_width="370dp"
-        android:layout_height="575dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="376dp"
+        android:layout_height="535dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/writing_title_create" />
 
     <Button
         android:id="@+id/create_button"
@@ -38,6 +37,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/writing_text" />
+
+    <EditText
+        android:id="@+id/writing_title_create"
+        android:layout_width="376dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="17dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
