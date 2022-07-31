@@ -72,7 +72,7 @@ public class WritingPostActivity extends AppCompatActivity {
                 String comment = comment_create.getText().toString();
                 addcomment(comment,userid);
                 list_clear();
-                readcomment();
+                //readcomment();
 
             }
         });
@@ -81,7 +81,7 @@ public class WritingPostActivity extends AppCompatActivity {
 
     public void addcomment(String comment, String userid){
         //animal.java에서 선언했던 함수.
-        CommentListItem CommentListData = new CommentListItem(comment,userid);
+        CommentListItem CommentListData = new CommentListItem(userid,comment);
 
         //child는 해당 키 위치로 이동하는 함수입니다.
         //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
