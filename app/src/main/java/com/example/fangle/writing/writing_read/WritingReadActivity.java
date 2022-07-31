@@ -95,7 +95,7 @@ public class WritingReadActivity extends AppCompatActivity {
                 post_intent.putExtra("writing",Writing);
                 post_intent.putExtra("date_created",date_created);
                 startActivity(post_intent);
-
+                list_clear();
             }
         });
 

@@ -52,4 +52,8 @@ public class CommentListItemAdapter extends BaseAdapter {
     public void addItem(CommentListItem item){
         items.add(item);
     }
+
+    public void clear(){
+        items.clear();
+    }
 }
