@@ -15,6 +15,7 @@ import com.example.fangle.R;
 import com.example.fangle.account.user_data.UserData;
 import com.example.fangle.comment.comment_read.CommentListItem;
 import com.example.fangle.comment.comment_read.CommentListItemAdapter;
+import com.example.fangle.community.community_data.CommunityData;
 import com.example.fangle.writing.writing_read.WritingListItem;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,13 +38,13 @@ public class WritingPostActivity extends AppCompatActivity {
     Button comment_button;
     ListView bulletinboard_list;
     CommentListItemAdapter adapter;
-
+    String community_name="";
+    String board_name="";
+    String write="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_writing_post);
-
-        readcomment();
 
         bulletinboard_list = (ListView) findViewById(R.id.bulletinboard_list);
         adapter = new CommentListItemAdapter();
@@ -54,17 +55,23 @@ public class WritingPostActivity extends AppCompatActivity {
         writing2 = (TextView) findViewById(R.id.writing2);
 
         String userid = UserData.getInstance().getUserID();
+        community_name = CommunityData.getInstance().getCommunity_name();
+
         // 댓글
         comment_create = (EditText) findViewById(R.id.comment_create);
         comment_button = (Button) findViewById(R.id.comment_button);
 
         Intent writing_intent = getIntent();
+        board_name = writing_intent.getStringExtra("board_name");
         write_title.setText(writing_intent.getStringExtra("writing_title"));
+        write = writing_intent.getStringExtra("writing_title");
         nickname.setText(writing_intent.getStringExtra("nickname"));
         writing2.setText(writing_intent.getStringExtra("writing"));
         write_date.setText(writing_intent.getStringExtra("date_created"));
 
         bulletinboard_list.setAdapter(adapter);
+
+        readcomment();
 
         comment_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,11 +92,11 @@ public class WritingPostActivity extends AppCompatActivity {
 
         //child는 해당 키 위치로 이동하는 함수입니다.
         //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
-        databaseReference.child("Bulletinboard").child("Name").child("Wring").child("Name").child("Comment").child(comment).setValue(CommentListData);
+        databaseReference.child(community_name).child("Bulletinboard").child(board_name).child("Wring").child(write).child("Comment").child(comment).setValue(CommentListData);
     }
 
     public void readcomment(){
-        databaseReference.child("Bulletinboard").child("Name").child("Wring").child("Name").child("Comment").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(community_name).child("Bulletinboard").child(board_name).child("Wring").child(write).child("Comment").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //WritingListItem group = snapshot.getValue(WritingListItem.class);

@@ -28,6 +28,7 @@ import com.example.fangle.announcement.announcement_read.AnnounCementReadActivit
 import com.example.fangle.bulletinboard.bulletinboard_create.BulletinboardCreateActivity;
 import com.example.fangle.bulletinboard.bulletinboard_update.BulletinboardUpdateActivity;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
+import com.example.fangle.community.community_data.CommunityData;
 import com.example.fangle.writing.writing_post.WritingPostActivity;
 import com.example.fangle.writing.writing_read.WritingListItem;
 import com.example.fangle.writing.writing_read.WritingReadActivity;
@@ -50,10 +51,13 @@ public class BulletinboardReadActivity extends AppCompatActivity {
     TextView board_text,board_name;
     TextView jyp_text,twitter_text,facebook_text,youtube_text;
     ImageView board_image;
+
     BulletinboardListItemAdapter adapter;
-    String community_name = " 아직 미정 ";
+
+    String community_name = "";
     String announcement;
     String image_text ="";
+
     private ActivityResultLauncher<Intent> resultLauncher,updateLauncher;
 
     // 파이어베이스 DB연결 관련 선언
@@ -91,8 +95,10 @@ public class BulletinboardReadActivity extends AppCompatActivity {
 
         // getIntent
         Intent board_name = getIntent();
-        board_text.setText((board_name.getStringExtra("artist_name")) + " 게시판");
+        board_text.setText((board_name.getStringExtra("artist_name")));
         image_text = (board_name.getStringExtra("artist_name"));
+        // community_name = (board_name.getStringExtra("artist_name"));
+        community_name = CommunityData.getInstance().getCommunity_name();
 
         byte[] arr = getIntent().getByteArrayExtra("image"); // 이미지
         Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
@@ -152,7 +158,8 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             }
         });
 
-        databaseReference.child("Bulletinboard").addValueEventListener(new ValueEventListener() {
+        // 파이어베이스 DB에서 정보 읽기
+        databaseReference.child(community_name).child("Bulletinboard").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -178,6 +185,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.option_menu, menu);
     }
 
+    // 수정 삭제 버튼 선택 이밴트
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
 
@@ -199,6 +207,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
+    // 삭제 이밴트
     private void onDeleteContent(String Board_name) {
         databaseReference.child("Bulletinboard").child(Board_name).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -215,6 +224,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         list_clear();
     }
 
+    // 게시판 생성
     public void board_create(View view) {
         list_clear();
         Intent board_create_intent = new Intent(this, BulletinboardCreateActivity.class);
@@ -222,6 +232,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         startActivity(board_create_intent);
     }
 
+    // 공지사항 이동
     public void announcement(View view){
         Intent post_intent = new Intent(BulletinboardReadActivity.this, AnnounCementReadActivity.class);
         post_intent.putExtra("board_name",announcement);
@@ -229,6 +240,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         startActivity(post_intent);
     }
 
+    // 웹 사이트 이동
     public void web(View v){
         if(v.getId() == R.id.jyp_text){
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.jype.com/"));
@@ -248,6 +260,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
         }
     }
 
+    // 어뎁터 클리어
     public void list_clear(){
         int count = adapter.getCount();
         for(int i = 0;i<count;i++){

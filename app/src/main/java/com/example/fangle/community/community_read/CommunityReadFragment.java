@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.fangle.R;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinboardReadActivity;
+import com.example.fangle.community.community_data.CommunityData;
 import com.example.fangle.join.JoinActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -27,8 +28,9 @@ public class CommunityReadFragment extends Fragment {
     ImageButton imageButton01,imageButton02,imageButton03,imageButton04,imageButton05,imageButton06,imageButton07,imageButton08,imageButton09;
     Button join01,join02,join03,join04,join05,join06,join07,join08,join09;
 
-    String artist_name;
+    String artist_name = "";
 
+    CommunityData data;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,6 +67,8 @@ public class CommunityReadFragment extends Fragment {
                 Intent borard_intent = new Intent(getActivity(), BulletinboardReadActivity.class);
                 borard_intent.putExtra("artist_name",artist_name);
 
+                CommunityData.getInstance().setCommunity_name(artist_name);
+
                 //이미지 보내기
                 Bitmap sendBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nmixx);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -95,6 +99,8 @@ public class CommunityReadFragment extends Fragment {
                 Intent borard_intent = new Intent(getActivity(), BulletinboardReadActivity.class);
                 borard_intent.putExtra("artist_name",artist_name);
 
+                CommunityData.getInstance().setCommunity_name(artist_name);
+                
                 //이미지 보내기
                 Bitmap sendBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stray_kids);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();

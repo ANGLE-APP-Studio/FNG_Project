@@ -22,6 +22,7 @@ import com.example.fangle.account.user_data.UserData;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinboardListItemAdapter;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
 import com.example.fangle.bulletinboard.bulletinboard_update.BulletinboardUpdateActivity;
+import com.example.fangle.community.community_data.CommunityData;
 import com.example.fangle.writing.writing_create.WritingCreateActivity;
 import com.example.fangle.writing.writing_post.WritingPostActivity;
 import com.example.fangle.writing.writing_update.WritingUpdateActivity;
@@ -43,7 +44,6 @@ public class WritingReadActivity extends AppCompatActivity {
     //현재 연결은 데이터베이스에만 딱 연결해놓고
     //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
     private DatabaseReference databaseReference = database.getReference();
-    private DatabaseReference child = databaseReference.child("Bulletinboard").child("Name").child("Wring");
 
     long mNow;
     Date mDate;
@@ -58,6 +58,9 @@ public class WritingReadActivity extends AppCompatActivity {
     TextView board_name_text;
 
     String userid;
+    String board = "";
+    String community_name="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +75,11 @@ public class WritingReadActivity extends AppCompatActivity {
         adapter = new WritingListItemAdapter();
 
         userid = UserData.getInstance().getUserID();
+        community_name = CommunityData.getInstance().getCommunity_name();
 
         Intent bulletinboardRead_intent = getIntent();
         board_name_text.setText(bulletinboardRead_intent.getStringExtra("board_name"));
+        board = bulletinboardRead_intent.getStringExtra("board_name");
 
         writing_list.setAdapter(adapter);
 
@@ -90,6 +95,7 @@ public class WritingReadActivity extends AppCompatActivity {
 
                 // 클릭시 클 크게 보기
                 Intent post_intent = new Intent(WritingReadActivity.this, WritingPostActivity.class);
+                post_intent.putExtra("board_name",board);
                 post_intent.putExtra("writing_title",Writing_title);
                 post_intent.putExtra("nickname",nickname);
                 post_intent.putExtra("writing",Writing);
@@ -110,7 +116,7 @@ public class WritingReadActivity extends AppCompatActivity {
 //            }
 //        });
 
-        child.addValueEventListener(new ValueEventListener() {
+        databaseReference.child(community_name).child("Bulletinboard").child(board).child("Wring").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     //WritingListItem group = snapshot.getValue(WritingListItem.class);
@@ -178,7 +184,7 @@ public class WritingReadActivity extends AppCompatActivity {
     public void writing_create_button(View view){
         list_clear();
         Intent writing_create_intent = new Intent(WritingReadActivity.this, WritingCreateActivity.class);
-        writing_create_intent.putExtra("SendData",userid);
+        writing_create_intent.putExtra("SendData",board);
         startActivity(writing_create_intent);
     }
 

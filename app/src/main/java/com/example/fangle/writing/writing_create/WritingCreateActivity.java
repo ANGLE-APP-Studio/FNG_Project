@@ -16,6 +16,7 @@ import com.example.fangle.account.sign_up.SignUpActivity;
 import com.example.fangle.account.user_data.UserData;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinboardListItemAdapter;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
+import com.example.fangle.community.community_data.CommunityData;
 import com.example.fangle.writing.writing_read.WritingListItem;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -50,6 +51,7 @@ public class WritingCreateActivity extends AppCompatActivity {
     String receive,result,title;
     TextView textView;
     String userid;
+    String community_name="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,7 @@ public class WritingCreateActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
 
         userid = UserData.getInstance().getUserID();
+        community_name = CommunityData.getInstance().getCommunity_name();
 
         Bulletinboard_adapter = new BulletinboardListItemAdapter();
 
@@ -95,7 +98,7 @@ public class WritingCreateActivity extends AppCompatActivity {
 
         //child는 해당 키 위치로 이동하는 함수입니다.
         //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
-        databaseReference.child("Bulletinboard").child("Name").child("Wring").child(title).setValue(WritingListData);
+        databaseReference.child(community_name).child("Bulletinboard").child(receive).child("Wring").child(title).setValue(WritingListData);
     }
 
     private String getTime(){
