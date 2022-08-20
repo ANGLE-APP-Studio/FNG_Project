@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.example.fangle.R;
 import com.example.fangle.account.user_data.UserData;
@@ -28,9 +30,11 @@ public class BulletinboardCreateActivity extends Activity {
 
     BulletinboardListItemAdapter adapter;
     String community_name,result;
+    String rng = "";
     Button cancel_create,create_button;
     EditText board_name_text_create;
-
+    RadioGroup rdgGroup;
+    RadioButton radioButton1,radioButton2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,8 @@ public class BulletinboardCreateActivity extends Activity {
         board_name_text_create = (EditText) findViewById(R.id.board_name_text_create);
         cancel_create = (Button) findViewById(R.id.cancel_create);
         create_button = (Button) findViewById(R.id.create_button);
+
+
 
         //adapter 참조
         adapter = new BulletinboardListItemAdapter();
@@ -52,16 +58,10 @@ public class BulletinboardCreateActivity extends Activity {
         create_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                get_rng();
                result = board_name_text_create.getText().toString();
-//                if(result.length() != 0){
-//                    Intent intent01 = new Intent();
-//                    intent01.putExtra("ResultData", result);
-//                    setResult(RESULT_OK, intent01);
-//                }else {
-//                    setResult(RESULT_CANCELED);
-//                }
-                addBulletinboard(result);
-                finish();
+               addBulletinboard(result,rng);
+               finish();
             }
         });
 
@@ -70,13 +70,25 @@ public class BulletinboardCreateActivity extends Activity {
 
     }
 
-    private void addBulletinboard(String result){
+    private void addBulletinboard(String result,String rng){
         //animal.java에서 선언했던 함수.
-        BulletinborardListItem BulletinboardData = new BulletinborardListItem(result);
+        BulletinborardListItem BulletinboardData = new BulletinborardListItem(result,rng);
 
         //child는 해당 키 위치로 이동하는 함수입니다.
         //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
         databaseReference.child(community_name).child("Bulletinboard").child(result).setValue(BulletinboardData);
+    }
+
+    private String get_rng(){
+        radioButton1 = (RadioButton) findViewById(R.id.member_free_create);
+        radioButton2 = (RadioButton) findViewById(R.id.member_pay_create);
+
+        if(radioButton1.isChecked()){
+            rng = radioButton1.getText().toString();
+        }else if (radioButton2.isChecked()){
+            rng = radioButton2.getText().toString();
+        }
+        return rng;
     }
 
 }

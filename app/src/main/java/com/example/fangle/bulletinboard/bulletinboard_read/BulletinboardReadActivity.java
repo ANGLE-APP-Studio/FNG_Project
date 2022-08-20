@@ -120,30 +120,6 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             }
         });
 
-//        board_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-//            @Override
-//            public boolean onItemLongClick(AdapterView parent, View v, int position, long id){
-//                // 롱 클릭시 수정 삭제
-////                Intent dialog_intent = new Intent(BulletinboardReadActivity.this,BulletinboardDialogActivity.class);
-////                startActivity(dialog_intent);
-//
-//                return true;
-//            }
-//        });
-
-//        resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-//            @Override
-//            public void onActivityResult(ActivityResult result) {
-//                if(result.getResultCode() == RESULT_OK){
-//                    Intent data_intent = result.getData();
-//                    String data_result = data_intent.getExtras().getString("ResultData");
-//                    adapter.addItem(new BulletinborardListItem(data_result));
-//                    adapter.notifyDataSetChanged();
-//                }
-//            }
-//        });
-
-
         updateLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
@@ -199,6 +175,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             update.putExtra("Board_name",Board_name);
             update.putExtra("index",index);
             startActivity(update);
+            list_clear();
             adapter.notifyDataSetChanged();
         }else if(itemId == R.id.delete){
             onDeleteContent(Board_name);
@@ -209,7 +186,7 @@ public class BulletinboardReadActivity extends AppCompatActivity {
 
     // 삭제 이밴트
     private void onDeleteContent(String Board_name) {
-        databaseReference.child("Bulletinboard").child(Board_name).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReference.child(community_name).child("Bulletinboard").child(Board_name).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(BulletinboardReadActivity.this, "삭제 성공", Toast.LENGTH_SHORT).show();

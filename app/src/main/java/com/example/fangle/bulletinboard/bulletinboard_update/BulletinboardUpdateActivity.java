@@ -14,11 +14,13 @@ import android.widget.EditText;
 import com.example.fangle.R;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinboardListItemAdapter;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
+import com.example.fangle.community.community_data.CommunityData;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class BulletinboardUpdateActivity extends Activity {
 
+    String community_name = "";
     String result,Board_name;
     EditText board_name_text_update;
     Button update_button,cancle_update;
@@ -45,6 +47,8 @@ public class BulletinboardUpdateActivity extends Activity {
         Board_name = get_index.getStringExtra("Board_name");
 
         board_name_text_update.setHint(Board_name);
+
+        community_name = CommunityData.getInstance().getCommunity_name();
 
         // 게시판 수정 버튼
         update_button.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +83,7 @@ public class BulletinboardUpdateActivity extends Activity {
 
         //child는 해당 키 위치로 이동하는 함수입니다.
         //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
-        databaseReference.child("Bulletinboard").child(Board_name).setValue(BulletinboardData);
+        databaseReference.child(community_name).child("Bulletinboard").child(Board_name).setValue(BulletinboardData);
     }
 
 }
