@@ -1,9 +1,6 @@
 package com.example.fangle.writing.writing_read;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,14 +11,14 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.fangle.R;
 import com.example.fangle.account.user_data.UserData;
 import com.example.fangle.bulletinboard.bulletinboard_read.BulletinboardListItemAdapter;
-import com.example.fangle.bulletinboard.bulletinboard_read.BulletinborardListItem;
-import com.example.fangle.bulletinboard.bulletinboard_update.BulletinboardUpdateActivity;
 import com.example.fangle.community.community_data.CommunityData;
 import com.example.fangle.writing.writing_create.WritingCreateActivity;
 import com.example.fangle.writing.writing_post.WritingPostActivity;
@@ -34,7 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 public class WritingReadActivity extends AppCompatActivity {
     // 파이어베이스 DB연결 관련 선언
@@ -55,11 +51,15 @@ public class WritingReadActivity extends AppCompatActivity {
     WritingListItemAdapter adapter;
     BulletinboardListItemAdapter Bulletinboard_adapter;
     UserData userData;
+
+    EditText search;
     TextView board_name_text;
+    ImageButton search_writing;
 
     String userid;
     String board = "";
     String community_name="";
+    String search_writing_text = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,9 @@ public class WritingReadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_writing_read);
 
         board_name_text = (TextView) findViewById(R.id.board_name_text);
+
+        search = (EditText) findViewById(R.id.search);
+        search_writing_text = search.getText().toString();
 
         // listview 참조
         writing_list = (ListView) findViewById(R.id.bulletinboard_list);
@@ -80,6 +83,37 @@ public class WritingReadActivity extends AppCompatActivity {
         Intent bulletinboardRead_intent = getIntent();
         board_name_text.setText(bulletinboardRead_intent.getStringExtra("board_name"));
         board = bulletinboardRead_intent.getStringExtra("board_name");
+
+        search_writing = (ImageButton) findViewById(R.id.search_writing);
+        search_writing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                list_clear();
+                adapter.notifyDataSetChanged();
+                databaseReference.child(community_name).child("Bulletinboard").child(board).child("Wring").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        //WritingListItem group = snapshot.getValue(WritingListItem.class);
+                        for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            String writing = snapshot.child("writing").getValue(String.class);
+                            String nickname = snapshot.child("nickname").getValue(String.class);
+                            String date_created = snapshot.child("date_Created").getValue(String.class);
+                            String writing_title = snapshot.child("writing_title").getValue(String.class);
+                            if(search_writing_text.equals(writing)){
+                                adapter.addItem(new WritingListItem(writing,nickname,date_created,writing_title));
+                                adapter.notifyDataSetChanged();
+                                break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
+            }
+        });
 
         writing_list.setAdapter(adapter);
 
@@ -104,17 +138,6 @@ public class WritingReadActivity extends AppCompatActivity {
                 list_clear();
             }
         });
-
-//        writing_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-//            @Override
-//            public boolean onItemLongClick(AdapterView parent, View v, int position, long id){
-//                // 롱 클릭시 수정 삭제
-//                // 다이얼 로그를 불러들이고 그 안에 수정 삭제 기능을 넣는다.
-//                Intent writing_dialog = new Intent(WritingReadActivity.this,WritingDialogActivity.class);
-//                startActivity(writing_dialog);
-//                return true;
-//            }
-//        });
 
         databaseReference.child(community_name).child("Bulletinboard").child(board).child("Wring").addValueEventListener(new ValueEventListener() {
             @Override

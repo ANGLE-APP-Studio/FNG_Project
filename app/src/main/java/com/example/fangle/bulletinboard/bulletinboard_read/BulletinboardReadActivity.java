@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fangle.R;
+import com.example.fangle.account.sign_in.SignInActivity;
 import com.example.fangle.announcement.announcement_read.AnnounCementReadActivity;
 import com.example.fangle.bulletinboard.bulletinboard_create.BulletinboardCreateActivity;
 import com.example.fangle.bulletinboard.bulletinboard_update.BulletinboardUpdateActivity;
@@ -112,11 +113,16 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             public void onItemClick(AdapterView parent, View v, int position, long id){
                 //  리스트 아이템 에서
                 String board = ((BulletinborardListItem)adapter.getItem(position)).getBoard_name();
-                // 클릭시 게시글로 넘어감
-                Intent post_intent = new Intent(BulletinboardReadActivity.this, WritingReadActivity.class);
-                post_intent.putExtra("board_name",board);
-                startActivity(post_intent);
-                list_clear();
+                String rng = ((BulletinborardListItem)adapter.getItem(position)).getRng();
+                if(rng.equals("무료")){
+                    // 클릭시 게시글로 넘어감
+                    Intent post_intent = new Intent(BulletinboardReadActivity.this, WritingReadActivity.class);
+                    post_intent.putExtra("board_name",board);
+                    startActivity(post_intent);
+                    list_clear();
+                }else{
+                    Toast.makeText(BulletinboardReadActivity.this, "회원등급이 맞지않습니다." + rng, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -139,9 +145,9 @@ public class BulletinboardReadActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    BulletinborardListItem group = snapshot.getValue(BulletinborardListItem.class);
-                    String value = Objects.requireNonNull(group).getBoard_name();
-                    adapter.addItem(new BulletinborardListItem(value));
+                    String value = snapshot.child("board_name").getValue(String.class);
+                    String rng = snapshot.child("rng").getValue(String.class);
+                    adapter.addItem(new BulletinborardListItem(value,rng));
                     adapter.notifyDataSetChanged();
                 }
             }
